@@ -59,4 +59,10 @@ router.post('/update/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+  Jewelry.findByIdAndDelete(req.params.id)
+    .then(() => res.json('Jewelry removed'))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 module.exports = router;

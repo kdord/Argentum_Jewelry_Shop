@@ -40,6 +40,13 @@ export default class ShowJewelry extends Component {
     }
   }
 
+  handleRemove() {
+    axios
+      .delete('/jewelry/' + this.props.match.params.id)
+      .then(res => console.log('Removed'));
+    this.props.history.push('/catalog');
+  }
+
   render() {
     console.log(this.state.jewelry);
     const { jewelry } = this.state;
@@ -52,10 +59,8 @@ export default class ShowJewelry extends Component {
               Редагувати
             </Link>
           </Button>
-          <Button variant='danger' block>
-            <Link to={`/remove/${jewelry._id}`} style={{ color: 'white' }}>
-              Видалити
-            </Link>
+          <Button variant='danger' block onClick={() => this.handleRemove()}>
+            Видалити
           </Button>
         </div>
         <div className='jewelry-smow-main d-flex'>
@@ -73,7 +78,7 @@ export default class ShowJewelry extends Component {
             <h5>{jewelry.jewelry_size}</h5>
             <h5>Матеріал: {jewelry.jewelry_material}</h5>
             <h5>
-              {this.stajewelry_inStock ? 'В наявності' : 'Немає в наявності'}
+              {jewelry.jewelry_inStock ? 'В наявності' : 'Немає в наявності'}
             </h5>
             {jewelry.jewelry_note && <p>{jewelry.jewelry_note}</p>}
           </div>
