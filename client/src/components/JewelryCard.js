@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Card } from 'react-bootstrap';
 
 export default class JewelryCard extends Component {
   render() {
@@ -21,12 +22,17 @@ export default class JewelryCard extends Component {
         title = 'Каблучка';
     }
     return (
-      <div className='card m-3'>
-        <div className='card-body'>
-          <h5 className=''>{title}</h5>
+      <Card className='card m-3' style={{ width: '18rem' }}>
+        <Card.Img
+          src={jewelry.jewelry_img_title}
+          style={{ width: '100%' }}
+          variant='top'
+        />
+        <Card.Body>
+          <Card.Title>{title}</Card.Title>
           <h6>{jewelry.jewelry_price} UAN</h6>
-        </div>
-      </div>
+        </Card.Body>
+      </Card>
     );
   }
 }

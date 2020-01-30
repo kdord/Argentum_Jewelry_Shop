@@ -11,10 +11,16 @@ let JewelrySchema = new Schema({
     type: Number,
     required: true
   },
-  // jewelry_img_data: {
-  //   type: String,
-  //   required: true
-  // },
+  jewelry_img_title: {
+    type: String,
+    required: true
+  },
+  jewelry_img_desc1: {
+    type: String
+  },
+  jewelry_img_desc2: {
+    type: String
+  },
   jewelry_material: {
     type: String,
     required: true

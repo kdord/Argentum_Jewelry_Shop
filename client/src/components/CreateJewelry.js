@@ -11,6 +11,9 @@ export default class CreateJewelry extends Component {
       jewelry_material: 'Срібло 925 проби',
       jewelry_inStock: true,
       jewelry_size: '',
+      jewelry_img_title: '',
+      jewelry_img_desc1: '',
+      jewelry_img_desc2: '',
       jewelry_note: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -28,6 +31,9 @@ export default class CreateJewelry extends Component {
       jewelry_price: this.state.jewelry_price,
       jewelry_material: this.state.jewelry_material,
       jewelry_inStock: this.state.jewelry_inStock,
+      jewelry_img_title: this.state.jewelry_img_title,
+      jewelry_img_desc1: this.state.jewelry_img_desc1,
+      jewelry_img_desc2: this.state.jewelry_img_desc2,
       jewelry_size: this.state.jewelry_size,
       jewelry_note: this.state.jewelry_note
     };
@@ -46,6 +52,9 @@ export default class CreateJewelry extends Component {
       jewelry_material: 'Срібло 925 проби',
       jewelry_inStock: true,
       jewelry_size: '',
+      jewelry_img_title: '',
+      jewelry_img_desc1: '',
+      jewelry_img_desc2: '',
       jewelry_note: ''
     });
   };
@@ -111,6 +120,36 @@ export default class CreateJewelry extends Component {
               placeholder='Розмір'
               value={this.state.jewelry_size}
               onChange={this.handleChange}
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              className='form-control'
+              value={this.state.jewelry_img_title}
+              onChange={this.handleChange}
+              type='text'
+              name='jewelry_img_title'
+              placeholder='Посилання на головне зображення'
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              className='form-control'
+              value={this.state.jewelry_img_desc1}
+              onChange={this.handleChange}
+              type='text'
+              name='jewelry_img_desc1'
+              placeholder='Посилання на зображення для опису'
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              className='form-control'
+              value={this.state.jewelry_img_desc2}
+              onChange={this.handleChange}
+              type='text'
+              name='jewelry_img_desc2'
+              placeholder='Посилання на зображення для опису'
             />
           </div>
           <div className='form-group'>
