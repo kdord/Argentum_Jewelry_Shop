@@ -57,6 +57,7 @@ export default class CreateJewelry extends Component {
       jewelry_img_desc2: '',
       jewelry_note: ''
     });
+    this.props.history.push('/catalog');
   };
 
   render() {

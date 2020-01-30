@@ -5,7 +5,8 @@ import LandingPage from './components/LandingPage';
 import CreateJewelry from './components/CreateJewelry';
 import Navbar from './components/Navbar';
 import Catalog from './components/Catalog';
-import JewelryShowPage from './components/JewelryShowPage';
+import ShowJewelry from './components/ShowJewelry';
+import EditJewelry from './components/EditJewelry';
 
 export default class App extends Component {
   render() {
@@ -23,7 +24,8 @@ export default class App extends Component {
             <Route exact path='/catalog'>
               <Catalog />
             </Route>
-            <Route path={'/catalog/:id'} component={JewelryShowPage} />
+            <Route path={'/catalog/:id'} component={ShowJewelry} />
+            <Route path={'/update/:id'} component={EditJewelry} />
           </Switch>
         </div>
       </Router>

@@ -34,4 +34,29 @@ router.post('/save', (req, res) => {
   });
 });
 
+router.post('/update/:id', (req, res) => {
+  Jewelry.findById(req.params.id)
+    .then(jewelry => {
+      jewelry.jewelry_type = req.body.jewelry_type;
+      jewelry.jewelry_price = req.body.jewelry_price;
+      jewelry.jewelry_material = req.body.jewelry_material;
+      jewelry.jewelry_inStock = req.body.jewelry_inStock;
+      jewelry.jewelry_img_title = req.body.jewelry_img_title;
+      jewelry.jewelry_img_desc1 = req.body.jewelry_img_desc1;
+      jewelry.jewelry_img_desc2 = req.body.jewelry_img_desc2;
+      jewelry.jewelry_size = req.body.jewelry_size;
+      jewelry.jewelry_note = req.body.jewelry_note;
+
+      jewelry
+        .save()
+        .then(() => res, json('jewelry updated'))
+        .catch(err => {
+          res.status(400).json('Error: ' + err);
+        });
+    })
+    .catch(err => {
+      res.status(400).json('Error: ' + err);
+    });
+});
+
 module.exports = router;

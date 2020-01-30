@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default class JewelryShowPage extends Component {
+export default class ShowJewelry extends Component {
   constructor(props) {
     super(props);
 
@@ -48,18 +48,12 @@ export default class JewelryShowPage extends Component {
       <div className='container mt-5 '>
         <div className='jewelry-show-btns mb-3'>
           <Button variant='info' block>
-            <Link
-              to={`/jewelry/update/${jewelry._id}`}
-              style={{ color: 'white' }}
-            >
+            <Link to={`/update/${jewelry._id}`} style={{ color: 'white' }}>
               Редагувати
             </Link>
           </Button>
           <Button variant='danger' block>
-            <Link
-              to={`/jewelry/remove/${jewelry._id}`}
-              style={{ color: 'white' }}
-            >
+            <Link to={`/remove/${jewelry._id}`} style={{ color: 'white' }}>
               Видалити
             </Link>
           </Button>
@@ -87,10 +81,18 @@ export default class JewelryShowPage extends Component {
 
         <div className='jewelry-show-img-desc d-block mt-5'>
           {jewelry.jewelry_img_desc1 && (
-            <img src={jewelry.jewelry_img_desc1} style={{ width: '50%' }} />
+            <img
+              src={jewelry.jewelry_img_desc1}
+              alt='img desc1'
+              style={{ width: '50%' }}
+            />
           )}
           {jewelry.jewelry_img_desc2 && (
-            <img src={jewelry.jewelry_img_desc2} style={{ width: '50%' }} />
+            <img
+              src={jewelry.jewelry_img_desc2}
+              alt='img desc2'
+              style={{ width: '50%' }}
+            />
           )}
         </div>
       </div>
