@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default class JewelryCard extends Component {
   render() {
@@ -31,6 +32,14 @@ export default class JewelryCard extends Component {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <h6>{jewelry.jewelry_price} UAN</h6>
+          <Button variant='info' block>
+            <Link
+              style={{ color: 'white' }}
+              to={`/jewelryShowPage/${jewelry._id}`}
+            >
+              Дізнатись більше
+            </Link>
+          </Button>
         </Card.Body>
       </Card>
     );

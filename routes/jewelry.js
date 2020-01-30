@@ -13,6 +13,14 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:id', (req, res) => {
+  Jewelry.findById(req.params.id)
+    .then(jewelry => res.json(jewelry))
+    .catch(err => {
+      res.status(400).json('Error: ' + err);
+    });
+});
+
 router.post('/save', (req, res) => {
   let data = req.body;
   let newJewelry = new Jewelry(data);
