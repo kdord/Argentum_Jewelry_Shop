@@ -33,10 +33,7 @@ export default class JewelryCard extends Component {
           <Card.Title>{title}</Card.Title>
           <h6>{jewelry.jewelry_price} UAN</h6>
           <Button variant='info' block>
-            <Link
-              style={{ color: 'white' }}
-              to={`/jewelryShowPage/${jewelry._id}`}
-            >
+            <Link style={{ color: 'white' }} to={`/catalog/${jewelry._id}`}>
               Дізнатись більше
             </Link>
           </Button>

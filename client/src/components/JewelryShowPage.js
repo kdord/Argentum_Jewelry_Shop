@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default class JewelryShowPage extends Component {
   constructor(props) {
@@ -44,6 +46,24 @@ export default class JewelryShowPage extends Component {
 
     return (
       <div className='container mt-5 '>
+        <div className='jewelry-show-btns mb-3'>
+          <Button variant='info' block>
+            <Link
+              to={`/jewelry/update/${jewelry._id}`}
+              style={{ color: 'white' }}
+            >
+              Редагувати
+            </Link>
+          </Button>
+          <Button variant='danger' block>
+            <Link
+              to={`/jewelry/remove/${jewelry._id}`}
+              style={{ color: 'white' }}
+            >
+              Видалити
+            </Link>
+          </Button>
+        </div>
         <div className='jewelry-smow-main d-flex'>
           <div className='jewelry-show-main-img' style={{ width: '25rem' }}>
             <img

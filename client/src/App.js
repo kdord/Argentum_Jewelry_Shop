@@ -23,7 +23,7 @@ export default class App extends Component {
             <Route exact path='/catalog'>
               <Catalog />
             </Route>
-            <Route path={'/jewelryShowPage/:id'} component={JewelryShowPage} />
+            <Route path={'/catalog/:id'} component={JewelryShowPage} />
           </Switch>
         </div>
       </Router>
