@@ -123,6 +123,19 @@ export default class CreateJewelry extends Component {
               placeholder='Примітки'
             />
           </div>
+          {/* <div className='form-group input-group'>
+            <div className='custom-file'>
+              <input
+                className='custom-file-input'
+                type='file'
+                id='inputImg'
+                aria-describedby='inputGroupFileAddon01'
+              />
+              <label className='custom-file-label' htmlFor='inputImg'>
+                Choose Image
+              </label>
+            </div> */}
+          {/* </div> */}
           <button className='btn btn-primary'>Зберегти</button>
         </form>
       </div>
