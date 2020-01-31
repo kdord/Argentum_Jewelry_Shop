@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
+import logo from '../images/logoNew.png';
+import instaLogo from '../images/logoInstagram.png';
+import fbLogo from '../images/fbLogo.png';
+import '../style/css/HeaderStyle.css';
 
 export default class Header extends Component {
   render() {
-    return <div>Header Component</div>;
+    const instaURL = 'https://www.instagram.com/argentum_jewelry_shop/';
+    const fbURL = 'https://www.facebook.com/argentumjewelry47/';
+    return (
+      <div className='header'>
+        <div className='header-top'>
+          <a href={instaURL}>
+            <img alt='instaLogo' src={instaLogo} />
+          </a>
+          <a href={fbURL}>
+            <img alt='fbLogo' src={fbLogo} />
+          </a>
+        </div>
+        <div className='header-bottom'>
+          <img alt='logo' src={logo} className='logo' />
+        </div>
+      </div>
+    );
   }
 }
