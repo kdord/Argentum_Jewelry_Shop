@@ -1,0 +1,18 @@
+.header {
+  .header-top {
+    display: flex;
+    justify-content: start;
+    padding: 0.25rem 0.5rem;
+    img {
+      width: 20px;
+      margin: 0 7px;
+    }
+  }
+  .header-bottom {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 20rem;
+    }
+  }
+}

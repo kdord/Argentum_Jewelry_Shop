@@ -8,12 +8,17 @@ import Catalog from './components/Catalog';
 import ShowJewelry from './components/ShowJewelry';
 import EditJewelry from './components/EditJewelry';
 
+import './style/css/AppStyle.css';
+import Header from './components/Header';
+
 export default class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className='app-root'>
+          <Header />
           <Navbar />
+
           <Switch>
             <Route exact path='/'>
               <LandingPage />

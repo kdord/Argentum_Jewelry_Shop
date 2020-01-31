@@ -1,0 +1,15 @@
+.navbar {
+  padding: 0;
+  display: inline; }
+  .navbar .nav-link {
+    color: #000000;
+    height: 3rem;
+    align-items: center;
+    margin: 0 1rem;
+    text-align: center;
+    transition: 0.3s;
+    font-size: larger; }
+    .navbar .nav-link:hover {
+      color: #5d7253; }
+
+/*# sourceMappingURL=NavbarStyle.css.map */

@@ -1,0 +1,14 @@
+.header .header-top {
+  display: flex;
+  justify-content: start;
+  padding: 0.25rem 0.5rem; }
+  .header .header-top img {
+    width: 20px;
+    margin: 0 7px; }
+.header .header-bottom {
+  display: flex;
+  justify-content: center; }
+  .header .header-bottom img {
+    width: 20rem; }
+
+/*# sourceMappingURL=HeaderStyle.css.map */
