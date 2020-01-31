@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import LandingPage from './components/LandingPage';
 import CreateJewelry from './components/CreateJewelry';
 import Navbar from './components/Navbar';
+import NavbarDev from './components/NavbarDev';
 import Catalog from './components/Catalog';
 import ShowJewelry from './components/ShowJewelry';
 import EditJewelry from './components/EditJewelry';
@@ -17,8 +18,8 @@ export default class App extends Component {
       <Router>
         <div className='app-root'>
           <Header />
+          <NavbarDev />
           <Navbar />
-
           <Switch>
             <Route exact path={'/'} component={LandingPage} />
             <Route exact path={'/create'} component={CreateJewelry} />
