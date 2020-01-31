@@ -68,7 +68,7 @@ export default class ShowJewelry extends Component {
           {/* <div className='jewelry-show-main-img' style={{ width: '25rem' }}>
           </div> */}
           <div className='row row-cols-1 row-cols-md-2'>
-            <div className='col'>
+            <div className='col mb-5'>
               <Carousel
                 className='jewelry-show-carousel'
                 interval={null}

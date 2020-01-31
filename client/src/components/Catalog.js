@@ -27,14 +27,15 @@ export default class Catalog extends Component {
   jewelryList = () => {
     return this.state.jewelry.map((jewelry, index) => {
       return (
-        <div className='col'>
-          <JewelryCard jewelry={jewelry} key={index} />
+        <div className='col' key={index}>
+          <JewelryCard jewelry={jewelry} />
         </div>
       );
     });
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className='container'>
         <div
