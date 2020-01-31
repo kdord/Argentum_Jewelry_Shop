@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sBAAuB;EACrB,KAAK,EAAE,IAAI;EACX,0BAAI;IACF,KAAK,EAAE,IAAI;;AAIb,oCAAkB;EAChB,KAAK,EAAE,KAAK;;AAId,6CAAsB;EACpB,KAAK,EAAE,OAAO;AAGd;iCACG;EACD,OAAO,EAAE,MAAM",
+"sources": ["../scss/ShowJewelry.scss"],
+"names": [],
+"file": "ShowJewelry.css"
+}

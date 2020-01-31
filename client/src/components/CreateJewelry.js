@@ -7,13 +7,14 @@ export default class CreateJewelry extends Component {
 
     this.state = {
       jewelry_type: 'ring',
+      jewelry_name: '',
       jewelry_price: '',
       jewelry_material: 'Срібло 925 проби',
       jewelry_inStock: true,
       jewelry_size: '',
-      jewelry_img_title: '',
-      jewelry_img_desc1: '',
-      jewelry_img_desc2: '',
+      jewelry_img_1: '',
+      jewelry_img_2: '',
+      jewelry_img_3: '',
       jewelry_note: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -28,12 +29,13 @@ export default class CreateJewelry extends Component {
     evt.preventDefault();
     const newJewelry = {
       jewelry_type: this.state.jewelry_type,
+      jewelry_name: this.state.jewelry_name,
       jewelry_price: this.state.jewelry_price,
       jewelry_material: this.state.jewelry_material,
       jewelry_inStock: this.state.jewelry_inStock,
-      jewelry_img_title: this.state.jewelry_img_title,
-      jewelry_img_desc1: this.state.jewelry_img_desc1,
-      jewelry_img_desc2: this.state.jewelry_img_desc2,
+      jewelry_img_1: this.state.jewelry_img_1,
+      jewelry_img_2: this.state.jewelry_img_2,
+      jewelry_img_3: this.state.jewelry_img_3,
       jewelry_size: this.state.jewelry_size,
       jewelry_note: this.state.jewelry_note
     };
@@ -46,20 +48,24 @@ export default class CreateJewelry extends Component {
       .catch(err => {
         console.log(err);
       });
+    this.returnState();
+    this.props.history.push('/catalog');
+  };
+
+  returnState() {
     this.setState({
       jewelry_type: 'ring',
+      jewelry_name: '',
       jewelry_price: '',
       jewelry_material: 'Срібло 925 проби',
       jewelry_inStock: true,
       jewelry_size: '',
-      jewelry_img_title: '',
-      jewelry_img_desc1: '',
-      jewelry_img_desc2: '',
+      jewelry_img_1: '',
+      jewelry_img_2: '',
+      jewelry_img_3: '',
       jewelry_note: ''
     });
-    this.props.history.push('/catalog');
-  };
-
+  }
   render() {
     return (
       <div className='container'>
@@ -77,6 +83,18 @@ export default class CreateJewelry extends Component {
               <option value={'earrings'}>Сережки</option>
               <option value={'necklece'}>Підвіска</option>
             </select>
+          </div>
+
+          <div className='form-group'>
+            <input
+              required
+              type='text'
+              className='form-control'
+              placeholder='Назва'
+              name='jewelry_name'
+              value={this.state.jewelry_name}
+              onChange={this.handleChange}
+            />
           </div>
 
           <div className='form-group'>
@@ -129,7 +147,7 @@ export default class CreateJewelry extends Component {
               value={this.state.jewelry_img_title}
               onChange={this.handleChange}
               type='text'
-              name='jewelry_img_title'
+              name='jewelry_img_1'
               placeholder='Посилання на головне зображення'
             />
           </div>
@@ -139,7 +157,7 @@ export default class CreateJewelry extends Component {
               value={this.state.jewelry_img_desc1}
               onChange={this.handleChange}
               type='text'
-              name='jewelry_img_desc1'
+              name='jewelry_img_2'
               placeholder='Посилання на зображення для опису'
             />
           </div>
@@ -149,7 +167,7 @@ export default class CreateJewelry extends Component {
               value={this.state.jewelry_img_desc2}
               onChange={this.handleChange}
               type='text'
-              name='jewelry_img_desc2'
+              name='jewelry_img_3'
               placeholder='Посилання на зображення для опису'
             />
           </div>

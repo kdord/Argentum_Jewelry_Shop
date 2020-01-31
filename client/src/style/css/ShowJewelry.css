@@ -1,0 +1,15 @@
+.jewelry-show-carousel {
+  width: 100%; }
+  .jewelry-show-carousel img {
+    width: 100%; }
+
+.jewelry-show-btns .jewelry-show-btn {
+  color: black; }
+
+.jewelry-show-main-desc .jewelry-show-inStock {
+  color: #808080; }
+.jewelry-show-main-desc .table td,
+.jewelry-show-main-desc .table th {
+  padding: 15px 0; }
+
+/*# sourceMappingURL=ShowJewelry.css.map */

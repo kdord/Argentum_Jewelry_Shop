@@ -7,19 +7,26 @@ let JewelrySchema = new Schema({
     type: String,
     required: true
   },
+  jewelry_name: {
+    type: String,
+    required: true
+  },
+
   jewelry_price: {
     type: Number,
     required: true
   },
-  jewelry_img_title: {
+  jewelry_img_1: {
     type: String,
     required: true
   },
-  jewelry_img_desc1: {
-    type: String
+  jewelry_img_2: {
+    type: String,
+    required: true
   },
-  jewelry_img_desc2: {
-    type: String
+  jewelry_img_3: {
+    type: String,
+    required: true
   },
   jewelry_material: {
     type: String,

@@ -30,6 +30,10 @@ export default class Catalog extends Component {
   };
 
   render() {
-    return <div style={{ display: 'flex' }}>{this.jewelryList()}</div>;
+    return (
+      <div className='container' style={{ display: 'flex' }}>
+        {this.jewelryList()}
+      </div>
+    );
   }
 }

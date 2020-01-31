@@ -25,7 +25,7 @@ export default class JewelryCard extends Component {
     return (
       <Card className='card m-3' style={{ width: '18rem' }}>
         <Card.Img
-          src={jewelry.jewelry_img_title}
+          src={jewelry.jewelry_img_1}
           style={{ width: '100%' }}
           variant='top'
         />

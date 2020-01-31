@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
+import { Button, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import '../style/css/ShowJewelry.css';
 
 export default class ShowJewelry extends Component {
   constructor(props) {
@@ -54,51 +55,88 @@ export default class ShowJewelry extends Component {
     return (
       <div className='container mt-5 '>
         <div className='jewelry-show-btns mb-3'>
-          <Button variant='info' block>
-            <Link to={`/update/${jewelry._id}`} style={{ color: 'white' }}>
+          <Button variant='light' block>
+            <Link className='jewelry-show-btn' to={`/update/${jewelry._id}`}>
               Редагувати
             </Link>
           </Button>
-          <Button variant='danger' block onClick={() => this.handleRemove()}>
+          <Button variant='light' block onClick={() => this.handleRemove()}>
             Видалити
           </Button>
         </div>
-        <div className='jewelry-smow-main d-flex'>
-          <div className='jewelry-show-main-img' style={{ width: '25rem' }}>
-            <img
-              style={{ width: '100%' }}
-              src={jewelry.jewelry_img_title}
-              alt={jewelry.jewelry_type}
-            />
-          </div>
-          <div className='jewelry-show-main-desc p-5'>
-            {this.jewelryCardTitle()}
+        <div className='jewelry-show-main d-flex'>
+          {/* <div className='jewelry-show-main-img' style={{ width: '25rem' }}>
+          </div> */}
+          <div className='row row-cols-1 row-cols-md-2'>
+            <div className='col'>
+              <Carousel
+                className='jewelry-show-carousel'
+                interval={null}
+                slide={false}
+              >
+                <Carousel.Item>
+                  <img
+                    className='d-block w-100 '
+                    style={{ width: '100%' }}
+                    src={jewelry.jewelry_img_1}
+                    alt={jewelry.jewelry_type}
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className='d-block w-100 '
+                    style={{ width: '100%' }}
+                    src={jewelry.jewelry_img_2}
+                    alt={jewelry.jewelry_type}
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className='d-block w-100 '
+                    style={{ width: '100%' }}
+                    src={jewelry.jewelry_img_3}
+                    alt={jewelry.jewelry_type}
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </div>
+            <div className='col'>
+              <div className='jewelry-show-main-desc pl-5 '>
+                {/* {this.jewelryCardTitle()} */}
+                <h2>{jewelry.jewelry_name}</h2>
+                <p className='jewelry-show-inStock'>
+                  {jewelry.jewelry_inStock
+                    ? 'В наявності'
+                    : 'Немає в наявності'}
+                </p>
+                <table className='table table-borderless'>
+                  <thead>
+                    <th>Характеристики</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Ціна</td>
+                      <td>{jewelry.jewelry_price} UAN</td>
+                    </tr>
+                    <tr>
+                      <td>Розмір</td>
+                      <td>{jewelry.jewelry_size}</td>
+                    </tr>
+                    <tr>
+                      <td>Матеріал</td>
+                      <td>{jewelry.jewelry_material}</td>
+                    </tr>
+                    <tr>
+                      <td>Комплект</td>
+                      <td>Прикраса, коробочка, солодкий сюрприз</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-            <h5>Ціна: {jewelry.jewelry_price} UAN</h5>
-            <h5>{jewelry.jewelry_size}</h5>
-            <h5>Матеріал: {jewelry.jewelry_material}</h5>
-            <h5>
-              {jewelry.jewelry_inStock ? 'В наявності' : 'Немає в наявності'}
-            </h5>
-            {jewelry.jewelry_note && <p>{jewelry.jewelry_note}</p>}
+                {jewelry.jewelry_note && <p>{jewelry.jewelry_note}</p>}
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className='jewelry-show-img-desc d-block mt-5'>
-          {jewelry.jewelry_img_desc1 && (
-            <img
-              src={jewelry.jewelry_img_desc1}
-              alt='img desc1'
-              style={{ width: '50%' }}
-            />
-          )}
-          {jewelry.jewelry_img_desc2 && (
-            <img
-              src={jewelry.jewelry_img_desc2}
-              alt='img desc2'
-              style={{ width: '50%' }}
-            />
-          )}
         </div>
       </div>
     );

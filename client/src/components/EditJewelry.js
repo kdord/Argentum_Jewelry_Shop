@@ -7,13 +7,14 @@ export default class EditJewelry extends Component {
 
     this.state = {
       jewelry_type: 'ring',
+      jewelry_name: '',
       jewelry_price: '',
       jewelry_material: 'Срібло 925 проби',
       jewelry_inStock: true,
       jewelry_size: '',
-      jewelry_img_title: '',
-      jewelry_img_desc1: '',
-      jewelry_img_desc2: '',
+      jewelry_img_1: '',
+      jewelry_img_2: '',
+      jewelry_img_3: '',
       jewelry_note: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -48,13 +49,14 @@ export default class EditJewelry extends Component {
   returnState() {
     this.setState({
       jewelry_type: 'ring',
+      jewelry_name: '',
       jewelry_price: '',
       jewelry_material: 'Срібло 925 проби',
       jewelry_inStock: true,
       jewelry_size: '',
-      jewelry_img_title: '',
-      jewelry_img_desc1: '',
-      jewelry_img_desc2: '',
+      jewelry_img_1: '',
+      jewelry_img_2: '',
+      jewelry_img_3: '',
       jewelry_note: ''
     });
   }
@@ -102,6 +104,17 @@ export default class EditJewelry extends Component {
               <option value={'earrings'}>Сережки</option>
               <option value={'necklece'}>Підвіска</option>
             </select>
+          </div>
+          <div className='form-group'>
+            <input
+              required
+              type='text'
+              className='form-control'
+              placeholder='Назва'
+              name='jewelry_name'
+              value={this.state.jewelry_name}
+              onChange={this.handleChange}
+            />
           </div>
 
           <div className='form-group'>

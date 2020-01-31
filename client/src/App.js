@@ -20,17 +20,12 @@ export default class App extends Component {
           <Navbar />
 
           <Switch>
-            <Route exact path='/'>
-              <LandingPage />
-            </Route>
-            <Route exact path='/create'>
-              <CreateJewelry />
-            </Route>
-            <Route exact path='/catalog'>
-              <Catalog />
-            </Route>
-            <Route path={'/catalog/:id'} component={ShowJewelry} />
-            <Route path={'/update/:id'} component={EditJewelry} />
+            <Route exact path={'/'} component={LandingPage} />
+            <Route exact path={'/create'} component={CreateJewelry} />
+            <Route exact path={'/catalog'} component={Catalog} />
+
+            <Route exact path={'/catalog/:id'} component={ShowJewelry} />
+            <Route exact path={'/update/:id'} component={EditJewelry} />
           </Switch>
         </div>
       </Router>
