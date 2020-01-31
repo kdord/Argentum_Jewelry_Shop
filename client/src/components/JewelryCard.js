@@ -8,22 +8,24 @@ export default class JewelryCard extends Component {
     const { jewelry } = this.props;
 
     return (
-      <Card className='card'>
-        <Card.Img
-          src={jewelry.jewelry_img_1}
-          className='card-img'
-          variant='top'
-        />
-        <Card.Body>
-          <Card.Title>{jewelry.jewelry_name}</Card.Title>
-          <hr />
-          <h6>{jewelry.jewelry_price} UAN</h6>
+      <Link className='card-link' to={`/catalog/${jewelry._id}`}>
+        <Card className='card mt-4'>
+          <Card.Img
+            src={jewelry.jewelry_img_1}
+            className='card-img'
+            variant='top'
+          />
+          <Card.Body>
+            <Card.Title>{jewelry.jewelry_name}</Card.Title>
+            <hr />
+            <h6>{jewelry.jewelry_price} UAN</h6>
 
-          <Link className='card-btn-link btn ' to={`/catalog/${jewelry._id}`}>
+            {/* <Link className='card-btn-link btn ' to={`/catalog/${jewelry._id}`}>
             Дізнатись більше
-          </Link>
-        </Card.Body>
-      </Card>
+          </Link> */}
+          </Card.Body>
+        </Card>
+      </Link>
     );
   }
 }

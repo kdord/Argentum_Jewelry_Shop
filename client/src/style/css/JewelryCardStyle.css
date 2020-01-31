@@ -1,25 +1,18 @@
-.card {
+.card-link .card {
   border-radius: 0;
   padding: 0;
-  border: 0; }
-  .card .card-img {
+  border: 0;
+  color: #000;
+  transition: 0.5s; }
+  .card-link .card:hover {
+    -webkit-box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.48);
+    box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.48); }
+  .card-link .card .card-img {
     border-radius: 0;
     width: 100%; }
-  .card .card-body {
+  .card-link .card .card-body {
     padding: 0;
     padding-top: 15px;
     text-align: center; }
-  .card .card-btn {
-    background-color: white; }
-    .card .card-btn:hover {
-      color: black; }
-  .card .card-btn-link {
-    color: rgba(0, 0, 0, 0.5);
-    transition: 0.5s; }
-    .card .card-btn-link:hover {
-      color: white;
-      border: none;
-      background-color: rgba(0, 0, 0, 0.45);
-      text-decoration: none; }
 
 /*# sourceMappingURL=JewelryCardStyle.css.map */
