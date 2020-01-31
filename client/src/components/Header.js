@@ -3,6 +3,7 @@ import logo from '../images/logoNew.png';
 import instaLogo from '../images/logoInstagram.png';
 import fbLogo from '../images/fbLogo.png';
 import '../style/css/HeaderStyle.css';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
   render() {
@@ -19,7 +20,9 @@ export default class Header extends Component {
           </a>
         </div>
         <div className='header-bottom'>
-          <img alt='logo' src={logo} className='logo' />
+          <Link to='/'>
+            <img alt='logo' src={logo} className='logo' />
+          </Link>
         </div>
       </div>
     );
