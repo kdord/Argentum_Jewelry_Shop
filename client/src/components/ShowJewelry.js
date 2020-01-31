@@ -30,11 +30,11 @@ export default class ShowJewelry extends Component {
       case 'ring':
         return <h2 className='card-title'>Каблучка</h2>;
 
-      case 'braclete':
+      case 'bracelete':
         return <h2 className='card-title'>Браслет</h2>;
       case 'earrings':
         return <h2 className='card-title'>Сережки</h2>;
-      case 'necklece':
+      case 'necklace':
         return <h2 className='card-title'>Підвіска</h2>;
       default:
         return <h2 className='card-title'>Каблучка</h2>;

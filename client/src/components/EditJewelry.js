@@ -102,9 +102,9 @@ export default class EditJewelry extends Component {
               onChange={this.handleChange}
             >
               <option value={'ring'}>Каблучка</option>
-              <option value={'braclete'}>Браслет</option>
+              <option value={'bracelete'}>Браслет</option>
               <option value={'earrings'}>Сережки</option>
-              <option value={'necklece'}>Підвіска</option>
+              <option value={'necklace'}>Підвіска</option>
             </select>
           </div>
           <div className='form-group'>

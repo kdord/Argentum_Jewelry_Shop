@@ -33,7 +33,7 @@ connection.once('open', () => {
 //       jewelry_img_data: req.body.,
 //       jewelry_material: req.body.jewelry_material,
 //       jewelry_inStock: req.body.jewelry_inStock,
-//       // for ring or bracelet or necklece
+//       // for ring or bracelet or necklace
 //       jewelry_size: req.body.jewelry_size,
 //       jewelry_note: req.body.jewelry_note
 //   })

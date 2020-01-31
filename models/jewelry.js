@@ -36,7 +36,7 @@ let JewelrySchema = new Schema({
     type: Boolean,
     required: true
   },
-  // for ring or bracelet or necklece
+  // for ring or bracelet or necklace
   jewelry_size: {
     type: String
   },

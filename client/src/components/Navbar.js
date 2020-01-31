@@ -6,21 +6,31 @@ export default class Navbar extends Component {
   render() {
     return (
       <nav className='navbar '>
-        <div className='container justify-content-center'>
-          <ul className='nav justify-content-center'>
-            <li className='nav-item'>
-              <Link className='nav-link' to='/'>
-                Home
-              </Link>
-            </li>
+        <div className='container  '>
+          <ul className='nav'>
             <li className='nav-item'>
               <Link className='nav-link' to='/catalog'>
-                Catalog
+                Каталог
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/create'>
-                Create Jewelry Card
+              <Link className='nav-link' to='/catalog/rings'>
+                Каблучки
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/catalog/earrings'>
+                Сережки
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/catalog/necklaces'>
+                Підвіски
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/catalog/bracelets'>
+                Браслети
               </Link>
             </li>
           </ul>
