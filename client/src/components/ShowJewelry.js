@@ -53,7 +53,7 @@ export default class ShowJewelry extends Component {
     const { jewelry } = this.state;
 
     return (
-      <div className='container mt-5 '>
+      <div className='container mt-5 mb-5'>
         <div className='jewelry-show-btns mb-3'>
           <Button variant='light' block>
             <Link className='jewelry-show-btn' to={`/update/${jewelry._id}`}>

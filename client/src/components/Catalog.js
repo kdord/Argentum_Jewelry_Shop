@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import JewelryCard from './JewelryCard';
+import '../style/css/CatalogStyle.css';
 
 export default class Catalog extends Component {
   constructor(props) {
@@ -25,14 +26,23 @@ export default class Catalog extends Component {
 
   jewelryList = () => {
     return this.state.jewelry.map((jewelry, index) => {
-      return <JewelryCard jewelry={jewelry} key={index} />;
+      return (
+        <div className='col'>
+          <JewelryCard jewelry={jewelry} key={index} />
+        </div>
+      );
     });
   };
 
   render() {
     return (
-      <div className='container' style={{ display: 'flex' }}>
-        {this.jewelryList()}
+      <div className='container'>
+        <div
+          className='catalog row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4'
+          style={{ display: 'flex' }}
+        >
+          {this.jewelryList()}
+        </div>
       </div>
     );
   }

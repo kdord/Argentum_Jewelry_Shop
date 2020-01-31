@@ -26,13 +26,14 @@ export default class EditJewelry extends Component {
       .then(res => {
         this.setState({
           jewelry_type: res.data.jewelry_type,
+          jewelry_name: res.data.jewelry_name,
           jewelry_price: res.data.jewelry_price,
           jewelry_material: res.data.jewelry_material,
           jewelry_inStock: res.data.jewelry_inStock,
           jewelry_size: res.data.jewelry_size,
-          jewelry_img_title: res.data.jewelry_img_title,
-          jewelry_img_desc1: res.data.jewelry_img_desc1,
-          jewelry_img_desc2: res.data.jewelry_img_desc2,
+          jewelry_img_1: res.data.jewelry_img_1,
+          jewelry_img_2: res.data.jewelry_img_2,
+          jewelry_img_3: res.data.jewelry_img_3,
           jewelry_note: res.data.jewelry_note
         });
       })
@@ -65,12 +66,13 @@ export default class EditJewelry extends Component {
     evt.preventDefault();
     const newJewelry = {
       jewelry_type: this.state.jewelry_type,
+      jewelry_name: this.state.jewelry_name,
       jewelry_price: this.state.jewelry_price,
       jewelry_material: this.state.jewelry_material,
       jewelry_inStock: this.state.jewelry_inStock,
-      jewelry_img_title: this.state.jewelry_img_title,
-      jewelry_img_desc1: this.state.jewelry_img_desc1,
-      jewelry_img_desc2: this.state.jewelry_img_desc2,
+      jewelry_img_1: this.state.jewelry_img_1,
+      jewelry_img_2: this.state.jewelry_img_2,
+      jewelry_img_3: this.state.jewelry_img_3,
       jewelry_size: this.state.jewelry_size,
       jewelry_note: this.state.jewelry_note
     };
