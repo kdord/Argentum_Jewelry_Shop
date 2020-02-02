@@ -25,21 +25,6 @@ export default class ShowJewelry extends Component {
         console.log('Error: ' + err);
       });
   }
-  jewelryCardTitle() {
-    switch (this.state.jewelry.jewelry_type) {
-      case 'ring':
-        return <h2 className='card-title'>Каблучка</h2>;
-
-      case 'bracelete':
-        return <h2 className='card-title'>Браслет</h2>;
-      case 'earrings':
-        return <h2 className='card-title'>Сережки</h2>;
-      case 'necklace':
-        return <h2 className='card-title'>Підвіска</h2>;
-      default:
-        return <h2 className='card-title'>Каблучка</h2>;
-    }
-  }
 
   handleRemove() {
     axios
@@ -49,7 +34,6 @@ export default class ShowJewelry extends Component {
   }
 
   render() {
-    console.log(this.state.jewelry);
     const { jewelry } = this.state;
 
     return (
@@ -111,7 +95,9 @@ export default class ShowJewelry extends Component {
                 </p>
                 <table className='table table-borderless'>
                   <thead>
-                    <th>Характеристики</th>
+                    <tr>
+                      <th>Характеристики</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <tr>

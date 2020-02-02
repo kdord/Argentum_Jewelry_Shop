@@ -12,17 +12,60 @@ export default class Catalog extends Component {
     };
   }
   componentDidMount = () => {
-    axios
-      .get('/jewelry/')
-      .then(res => {
-        this.setState({
-          jewelry: res.data
+    if (this.props.jewelryType === 'all') {
+      axios
+        .get('/jewelry/')
+        .then(res => {
+          this.setState({
+            jewelry: res.data
+          });
+        })
+        .catch(err => {
+          console.log('Error: ' + err);
         });
-      })
-      .catch(err => {
-        console.log('Error: ' + err);
-      });
+    } else {
+      axios
+        .get('/jewelry/catalog/' + this.props.jewelryType)
+        .then(res => {
+          this.setState({
+            jewelry: res.data
+          });
+        })
+        .catch(err => {
+          console.log('Error: ' + err);
+        });
+    }
   };
+  shouldComponentUpdate(nextProps) {
+    return nextProps.jewelryType !== this.state.jewelryType;
+  }
+  componentDidUpdate(props) {
+    if (props.jewelryType !== this.props.jewelryType) {
+      if (this.props.jewelryType === 'all') {
+        axios
+          .get('/jewelry/')
+          .then(res => {
+            this.setState({
+              jewelry: res.data
+            });
+          })
+          .catch(err => {
+            console.log('Error: ' + err);
+          });
+      } else {
+        axios
+          .get('/jewelry/catalog/' + this.props.jewelryType)
+          .then(res => {
+            this.setState({
+              jewelry: res.data
+            });
+          })
+          .catch(err => {
+            console.log('Error: ' + err);
+          });
+      }
+    }
+  }
 
   jewelryList = () => {
     return this.state.jewelry.map((jewelry, index) => {
@@ -35,7 +78,6 @@ export default class Catalog extends Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className='container'>
         <div

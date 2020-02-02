@@ -12,6 +12,15 @@ router.get('/', (req, res) => {
     }
   });
 });
+router.get('/catalog/:type', (req, res) => {
+  Jewelry.find({ jewelry_type: req.params.type }, (err, jewelry) => {
+    if (err) {
+      console.log('Error: ' + err);
+    } else {
+      res.json(jewelry);
+    }
+  });
+});
 
 router.get('/:id', (req, res) => {
   Jewelry.findById(req.params.id)
@@ -24,7 +33,6 @@ router.get('/:id', (req, res) => {
 router.post('/save', (req, res) => {
   let data = req.body;
   let newJewelry = new Jewelry(data);
-  console.log('NewJewelry: ' + newJewelry);
   newJewelry.save(err => {
     if (err) {
       res.status(400).json({ msg: 'Sorry, smth went wrong' });

@@ -26,7 +26,27 @@ export default class App extends Component {
             <Route
               exact
               path={'/catalog'}
+              render={props => <Catalog {...props} jewelryType={'all'} />}
+            />
+            <Route
+              exact
+              path={'/catalog/rings'}
               render={props => <Catalog {...props} jewelryType={'ring'} />}
+            />
+            <Route
+              exact
+              path={'/catalog/earrings'}
+              render={props => <Catalog {...props} jewelryType={'earrings'} />}
+            />
+            <Route
+              exact
+              path={'/catalog/bracelets'}
+              render={props => <Catalog {...props} jewelryType={'bracelete'} />}
+            />
+            <Route
+              exact
+              path={'/catalog/necklaces'}
+              render={props => <Catalog {...props} jewelryType={'necklace'} />}
             />
 
             <Route exact path={'/catalog/:id'} component={ShowJewelry} />

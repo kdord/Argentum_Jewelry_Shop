@@ -39,7 +39,6 @@ export default class CreateJewelry extends Component {
       jewelry_size: this.state.jewelry_size,
       jewelry_note: this.state.jewelry_note
     };
-    console.log(newJewelry);
     axios
       .post('/jewelry/save', newJewelry)
       .then(res => {
