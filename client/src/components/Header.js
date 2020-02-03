@@ -31,7 +31,7 @@ class Header extends Component {
 
               <Dropdown.Menu>
                 <Dropdown.Item href='/login'>Login</Dropdown.Item>
-                <Dropdown.Item href='/registration'>Sign Up</Dropdown.Item>
+                <Dropdown.Item href='/signup'>Sign Up</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>

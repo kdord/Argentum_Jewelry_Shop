@@ -11,7 +11,8 @@ import EditJewelry from './components/EditJewelry';
 
 import './style/css/AppStyle.css';
 import Header from './components/Header';
-import LoginPage from './components/LoginPage';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
 
 export default class App extends Component {
   render() {
@@ -49,10 +50,11 @@ export default class App extends Component {
               path={'/catalog/necklaces'}
               render={props => <Catalog {...props} jewelryType={'necklace'} />}
             />
+            <Route exact path='/login' render={props => <Login {...props} />} />
             <Route
               exact
-              path='/login'
-              render={props => <LoginPage {...props} />}
+              path='/signup'
+              render={props => <SignUp {...props} />}
             />
 
             <Route exact path={'/catalog/:id'} component={ShowJewelry} />
