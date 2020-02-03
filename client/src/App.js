@@ -11,6 +11,7 @@ import EditJewelry from './components/EditJewelry';
 
 import './style/css/AppStyle.css';
 import Header from './components/Header';
+import LoginPage from './components/LoginPage';
 
 export default class App extends Component {
   render() {
@@ -47,6 +48,11 @@ export default class App extends Component {
               exact
               path={'/catalog/necklaces'}
               render={props => <Catalog {...props} jewelryType={'necklace'} />}
+            />
+            <Route
+              exact
+              path='/login'
+              render={props => <LoginPage {...props} />}
             />
 
             <Route exact path={'/catalog/:id'} component={ShowJewelry} />

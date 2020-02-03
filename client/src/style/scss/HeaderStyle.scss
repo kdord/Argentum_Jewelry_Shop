@@ -1,11 +1,16 @@
 .header {
   .header-top {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     padding: 0.25rem 0.5rem;
     img {
       width: 20px;
       margin: 0 7px;
+    }
+    .auth-dropdown {
+      background-color: white;
+      border: none;
+      padding: 0;
     }
   }
   .header-bottom {
