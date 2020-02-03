@@ -13,14 +13,12 @@ passport.serializeUser((user, done) => {
 //user object attaches to the request as req.user
 passport.deserializeUser((id, done) => {
   console.log('deserializeUser called');
-  User.findOne({ _id: id }),
-    'username',
-    (err, user) => {
-      console.log('*** Deserialize User, user: ');
-      console.log(user);
-      console.log('------');
-      done(null, user);
-    };
+  User.findOne({ _id: id }, 'username', (err, user) => {
+    console.log('*** Deserialize User, user: ');
+    console.log(user);
+    console.log('------');
+    done(null, user);
+  });
 });
 
 passport.use(LocalStrategy);

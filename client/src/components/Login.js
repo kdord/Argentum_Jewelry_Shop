@@ -6,7 +6,7 @@ export default class Login extends Component {
     super(props);
 
     this.state = {
-      email: '',
+      username: '',
       password: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -21,10 +21,30 @@ export default class Login extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('login form, email: ');
-    console.log(this.state.email);
+    console.log('login form, username: ');
+    console.log(this.state.username);
 
-    axios.post('/user/login', {});
+    axios
+      .post('/user/login', {
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(res => {
+        console.log('login responce');
+        console.log(res);
+        if (res.status === 200) {
+          // update App.js state
+          this.props.updateUser({
+            loggedIn: true,
+            username: res.data.username
+          });
+          this.props.history.push('/');
+        }
+      })
+      .catch(err => {
+        console.log('login error: ');
+        console.log(err);
+      });
   }
 
   render() {
@@ -34,10 +54,10 @@ export default class Login extends Component {
           <div className='form-group'>
             <input
               className='form-control'
-              type='email'
-              name='email'
-              value={this.state.email}
-              placeholder='Адреса електронної пошти'
+              type='username'
+              name='username'
+              value={this.state.username}
+              placeholder='Логін'
               onChange={this.handleChange}
             />
           </div>
