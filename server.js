@@ -1,16 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 const PORT = process.env.PORT || 9000;
+
+mongoose.Promise = global.Promise; //???
 
 const app = express();
 
 let Jewelry = require('./models/jewelry');
 const jewelryRoutes = require('./routes/jewelry');
+const User = require('./models/user');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(morgan('tiny'));
 // db config
 const MONGODB_URI =
   'mongodb+srv://kdord:kdordShopPass@cluster0-jskl6.mongodb.net/test?retryWrites=true&w=majority';
@@ -25,29 +30,33 @@ connection.once('open', () => {
   console.log('Mongo DB is connected!');
 });
 
-// app.post('/jewelry/save', (req, res) => {
-//   let newJewelry  = new Jewelry({
+app.post('/signup', (req, res) => {
+  console.log('user signup');
 
-//       jewelry_type: req.body.jewelry_type,
-//       jewelry_price: req.body.jewelry_price,
-//       jewelry_img_data: req.body.,
-//       jewelry_material: req.body.jewelry_material,
-//       jewelry_inStock: req.body.jewelry_inStock,
-//       // for ring or bracelet or necklace
-//       jewelry_size: req.body.jewelry_size,
-//       jewelry_note: req.body.jewelry_note
-//   })
-//   let newJewelry = new Jewelry(data);
-//   console.log('NewJewelry: ' + newJewelry);
-//   console.log(req.body);
-//   newJewelry.save(err => {
-//     if (err) {
-//       res.status(400).json({ msg: 'Sorry, smth went wrong' });
-//       return;
-//     }
-//     return res.json({ msg: 'data has been added' });
-//   });
-// });
+  const { email, username, password } = req.body;
+  // add validation
+  User.findOne({ username: username }, (err, userMatch) => {
+    // if (err) {
+    //   console.log('no matches');
+    // }
+    if (userMatch) {
+      return res.json({
+        error: `Sorry, already a user with the username ${username}`
+      });
+    }
+    const newUser = new User({
+      email: email,
+      username: username,
+      password: password
+    });
+    newUser.save((err, savedUser) => {
+      console.log('in .save');
+      console.log(newUser);
+      if (err) return res.json(err);
+      return res.json(savedUser);
+    });
+  });
+});
 
 app.use('/jewelry', jewelryRoutes);
 

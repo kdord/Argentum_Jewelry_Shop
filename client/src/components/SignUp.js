@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ export default class SignUp extends Component {
 
     this.state = {
       email: '',
-      login: '',
+      username: '',
       password: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,6 +24,27 @@ export default class SignUp extends Component {
     e.preventDefault();
     console.log('signup form, email: ');
     console.log(this.state.email);
+
+    //request to server
+    axios
+      .post('/signup', {
+        email: this.state.email,
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(res => {
+        console.log(res);
+        if (res.data) {
+          console.log('successful signup');
+        } else {
+          console.log('signup error');
+        }
+        this.props.history.push('/');
+      })
+      .catch(err => {
+        console.log('sign up server error');
+        console.log(err);
+      });
   }
 
   render() {
@@ -42,9 +64,9 @@ export default class SignUp extends Component {
           <div className='form-group'>
             <input
               className='form-control'
-              type='login'
-              name='login'
-              value={this.state.login}
+              type='username'
+              name='username'
+              value={this.state.username}
               placeholder='Логін'
               onChange={this.handleChange}
             />
