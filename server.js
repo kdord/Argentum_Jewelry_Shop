@@ -47,3 +47,15 @@ app.use('/jewelry', jewelryRoutes);
 app.listen(PORT, () => {
   console.log(`Server is started at ${PORT} port`);
 });
+
+// for production session
+
+// const MongoStore = require('connect-mongo')(session)
+// app.use(
+//   session({
+//     secret:'argentum',
+//     store: new MongoStore({mongooseConnection: connection}),
+//     resave:false,
+//     saveUninitialized:false
+//   })
+// )
