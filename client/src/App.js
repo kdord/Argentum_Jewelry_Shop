@@ -8,18 +8,53 @@ import NavbarDev from './components/NavbarDev';
 import Catalog from './components/Catalog';
 import ShowJewelry from './components/ShowJewelry';
 import EditJewelry from './components/EditJewelry';
-
-import './style/css/AppStyle.css';
 import Header from './components/Header';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
 
+import axios from 'axios';
+
+import './style/css/AppStyle.css';
+
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedIn: false,
+      username: null
+    };
+    this.getUser = this.getUser.bind(this);
+    this.updateUser = this.updateUser.bind(this);
+  }
+
+  componentDidMount() {
+    this.getUser();
+  }
+
+  updateUser(userObject) {
+    this.setState(userObject);
+  }
+
+  getUser() {
+    axios.get('/user/').then(res => {
+      console.log('Get user response: ');
+      console.log(res.data);
+      if (res.data.user) {
+        console.log('Get user: there is a user saved in the server session');
+        this.setState({ loggedIn: true, username: res.data.user.username });
+      } else {
+        console.log('Get user: no user');
+        this.setState({ loggedIn: false, username: null });
+      }
+    });
+  }
+
   render() {
     return (
       <Router>
         <div className='app-root'>
-          <Header />
+          <Header username={this.state.username} updateUser={this.updateUser} />
           <NavbarDev />
           <Navbar />
           <Switch>
@@ -50,7 +85,13 @@ export default class App extends Component {
               path={'/catalog/necklaces'}
               render={props => <Catalog {...props} jewelryType={'necklace'} />}
             />
-            <Route exact path='/login' render={props => <Login {...props} />} />
+            <Route
+              exact
+              path='/login'
+              render={props => (
+                <Login {...props} updateUser={this.updateUser} />
+              )}
+            />
             <Route
               exact
               path='/signup'
