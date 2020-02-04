@@ -166,30 +166,30 @@ export default class EditJewelry extends Component {
           <div className='form-group'>
             <input
               className='form-control'
-              value={this.state.jewelry_img_title}
+              value={this.state.jewelry_img_1}
               onChange={this.handleChange}
               type='text'
-              name='jewelry_img_title'
+              name='jewelry_img_1'
               placeholder='Посилання на головне зображення'
             />
           </div>
           <div className='form-group'>
             <input
               className='form-control'
-              value={this.state.jewelry_img_desc1}
+              value={this.state.jewelry_img_2}
               onChange={this.handleChange}
               type='text'
-              name='jewelry_img_desc1'
+              name='jewelry_img_2'
               placeholder='Посилання на зображення для опису'
             />
           </div>
           <div className='form-group'>
             <input
               className='form-control'
-              value={this.state.jewelry_img_desc2}
+              value={this.state.jewelry_img_3}
               onChange={this.handleChange}
               type='text'
-              name='jewelry_img_desc2'
+              name='jewelry_img_3'
               placeholder='Посилання на зображення для опису'
             />
           </div>
