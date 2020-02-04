@@ -7,7 +7,7 @@ const passport = require('../passport');
 router.post('/signup', (req, res) => {
   console.log('user signup');
 
-  const { email, username, password } = req.body;
+  const { email, username, firstName, lastName, password, basket } = req.body;
   // add validation
   User.findOne({ username: username }, (err, userMatch) => {
     // if (err) {
@@ -21,7 +21,10 @@ router.post('/signup', (req, res) => {
     const newUser = new User({
       email: email,
       username: username,
-      password: password
+      firstName: firstName,
+      lastName: lastName,
+      password: password,
+      basket: basket
     });
     newUser.save((err, savedUser) => {
       console.log('in .save');
@@ -42,10 +45,8 @@ router.post(
   passport.authenticate('local'),
   (req, res) => {
     console.log('logged in ', req.user);
-    var userInfo = {
-      username: req.user.username
-    };
-    res.send(userInfo);
+    let user = req.user;
+    res.send(user);
   }
 );
 

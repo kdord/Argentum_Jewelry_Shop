@@ -36,8 +36,9 @@ export default class Login extends Component {
           // update App.js state
           this.props.updateUser({
             loggedIn: true,
-            username: res.data.username
+            user: res.data
           });
+          console.log(res.data);
           this.props.history.push('/');
         }
       })

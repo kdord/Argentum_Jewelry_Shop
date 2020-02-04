@@ -22,7 +22,7 @@ export default class App extends Component {
 
     this.state = {
       loggedIn: false,
-      username: null
+      user: null
     };
     this.getUser = this.getUser.bind(this);
     this.updateUser = this.updateUser.bind(this);
@@ -34,6 +34,7 @@ export default class App extends Component {
 
   updateUser(userObject) {
     this.setState(userObject);
+    console.log(userObject);
   }
 
   getUser() {
@@ -42,10 +43,10 @@ export default class App extends Component {
       console.log(res.data);
       if (res.data.user) {
         console.log('Get user: there is a user saved in the server session');
-        this.setState({ loggedIn: true, username: res.data.user.username });
+        this.setState({ loggedIn: true, user: res.data.user });
       } else {
         console.log('Get user: no user');
-        this.setState({ loggedIn: false, username: null });
+        this.setState({ loggedIn: false, user: null });
       }
     });
   }
@@ -54,7 +55,7 @@ export default class App extends Component {
     return (
       <Router>
         <div className='app-root'>
-          <Header username={this.state.username} updateUser={this.updateUser} />
+          <Header user={this.state.user} updateUser={this.updateUser} />
           <NavbarDev />
           <Navbar />
           <Switch>

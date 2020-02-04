@@ -6,9 +6,12 @@ export default class SignUp extends Component {
     super(props);
 
     this.state = {
-      email: '',
       username: '',
-      password: ''
+      email: '',
+      firstName: '',
+      lastName: '',
+      password: '',
+      basket: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,9 +31,12 @@ export default class SignUp extends Component {
     //request to server
     axios
       .post('/user/signup', {
-        email: this.state.email,
         username: this.state.username,
-        password: this.state.password
+        email: this.state.email,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        password: this.state.password,
+        basket: this.state.basket
       })
       .then(res => {
         console.log(res);
@@ -39,7 +45,7 @@ export default class SignUp extends Component {
         } else {
           console.log('signup error');
         }
-        this.props.history.push('/');
+        this.props.history.push('/login');
       })
       .catch(err => {
         console.log('sign up server error');
@@ -54,6 +60,16 @@ export default class SignUp extends Component {
           <div className='form-group'>
             <input
               className='form-control'
+              type='username'
+              name='username'
+              value={this.state.username}
+              placeholder='Логін'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              className='form-control'
               type='email'
               name='email'
               value={this.state.email}
@@ -64,10 +80,20 @@ export default class SignUp extends Component {
           <div className='form-group'>
             <input
               className='form-control'
-              type='username'
-              name='username'
-              value={this.state.username}
-              placeholder='Логін'
+              type='text'
+              name='firstName'
+              value={this.state.firstName}
+              placeholder="Ім'я"
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              className='form-control'
+              type='text'
+              name='lastName'
+              value={this.state.lastName}
+              placeholder='Прізвище'
               onChange={this.handleChange}
             />
           </div>
