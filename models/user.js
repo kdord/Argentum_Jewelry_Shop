@@ -29,7 +29,12 @@ const userSchema = new Schema({
     unique: false,
     required: true
   },
-  basket: [String]
+  basket: [
+    {
+      id: String,
+      amount: Number
+    }
+  ]
 });
 
 //define schema methods
