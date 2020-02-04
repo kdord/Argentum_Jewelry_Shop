@@ -9,8 +9,11 @@ export default class ShowJewelry extends Component {
     super(props);
 
     this.state = {
-      jewelry: {}
+      jewelry: {},
+      basketAmount: 1
     };
+    this.handlePlus = this.handlePlus.bind(this);
+    this.handleMinus = this.handleMinus.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +34,14 @@ export default class ShowJewelry extends Component {
       .delete('/jewelry/' + this.props.match.params.id)
       .then(res => console.log('Removed'));
     this.props.history.push('/catalog');
+  }
+
+  handlePlus() {
+    this.setState({ basketAmount: this.state.basketAmount + 1 });
+  }
+  handleMinus() {
+    if (this.state.basketAmount === 0) return;
+    this.setState({ basketAmount: this.state.basketAmount - 1 });
   }
 
   render() {
@@ -93,6 +104,23 @@ export default class ShowJewelry extends Component {
                     ? 'В наявності'
                     : 'Немає в наявності'}
                 </p>
+                <div className='jewelry-show-basket d-flex'>
+                  <div className='btn-group'>
+                    <button
+                      className='btn btn-secondary basket-btn'
+                      onClick={this.handleMinus}
+                    >
+                      -
+                    </button>
+                    <input value={this.state.basketAmount} />
+                    <button
+                      className='btn btn-secondary basket-btn'
+                      onClick={this.handlePlus}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
                 <table className='table table-borderless'>
                   <thead>
                     <tr>
