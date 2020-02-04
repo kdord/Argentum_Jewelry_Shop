@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import BasketItem from './BasketItem';
+import BasketsItem from './BasketsItem';
+import { MdPhoto } from 'react-icons/md';
 
 export default class Basket extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class Basket extends Component {
     };
     this.initialization = this.initialization.bind(this);
     this.getBasket = this.getBasket.bind(this);
+    this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
   }
 
   componentDidMount() {
@@ -52,10 +54,51 @@ export default class Basket extends Component {
     });
   }
 
+  toPay(amount, price) {
+    let newSum = this.state.toPay + amount * price;
+    this.setState({ toPay: newSum });
+  }
+
+  calculateTotalPrice = () => {
+    let amount = 0;
+    this.state.basket.forEach(jewelry => {
+      amount += jewelry.amount * jewelry.jewelry_price;
+    });
+    return amount;
+  };
+
+  basketJewelryList = () => {
+    return this.state.basket.map((jewelry, index) => {
+      return <BasketsItem jewelry={jewelry} key={index} />;
+    });
+  };
+
   render() {
+    const toPay = this.calculateTotalPrice();
+
     return (
       <div>
         <h2>Корзина</h2>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th>
+                <MdPhoto />{' '}
+              </th>
+              <th>Назва</th>
+              <th>Кількість</th>
+              <th>Ціна</th>
+              <th>Всього</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.basketJewelryList()}
+            <tr>
+              <td colSpan='4'>Всього</td>
+              <td>{toPay} UAN</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     );
   }
