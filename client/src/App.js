@@ -15,6 +15,7 @@ import SignUp from './components/SignUp';
 import axios from 'axios';
 
 import './style/css/AppStyle.css';
+import Basket from './components/Basket';
 
 export default class App extends Component {
   constructor(props) {
@@ -107,6 +108,11 @@ export default class App extends Component {
               )}
             />
             <Route exact path={'/update/:id'} component={EditJewelry} />
+            <Route
+              exact
+              path={'/basket/:id'}
+              render={props => <Basket {...props} user={this.state.user} />}
+            />
           </Switch>
         </div>
       </Router>

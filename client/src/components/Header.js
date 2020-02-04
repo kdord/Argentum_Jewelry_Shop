@@ -5,7 +5,7 @@ import fbLogo from '../images/fbLogo.png';
 import '../style/css/HeaderStyle.css';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
-import { FaUser } from 'react-icons/fa';
+import { FaUser, FaShoppingCart } from 'react-icons/fa';
 
 import axios from 'axios';
 
@@ -62,7 +62,16 @@ class Header extends Component {
                 <Dropdown.Item onClick={this.logout}>LogOut</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-            {user ? <p>{user.firstName}</p> : ''}
+            {user ? (
+              <>
+                <p>{user.firstName}</p>{' '}
+                <Link to={`/basket/${user._id}`} className='ml-3'>
+                  <FaShoppingCart />
+                </Link>{' '}
+              </>
+            ) : (
+              ''
+            )}
           </div>
         </div>
         <div className='header-bottom'>
