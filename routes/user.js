@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const Jewelry = require('../models/jewelry');
 const User = require('../models/user');
 const passport = require('../passport');
 
@@ -67,6 +68,31 @@ router.post('/logout', (req, res) => {
   } else {
     res.send({ msg: 'no user to log out' });
   }
+});
+
+router.post('/:userId/add/:jewelryId', (req, res) => {
+  console.log('in .post /add');
+  console.log('req.body:');
+  console.log(req.body);
+  User.findOne({ _id: req.params.userId }, (err, foundUser) => {
+    if (err) {
+      console.log('Error: ' + err);
+    } else {
+      Jewelry.findOne({ _id: req.params.jewelryId }, (err, foundJewelry) => {
+        console.log(foundUser.basket);
+        console.log(foundJewelry._id);
+        const addedJewelry = {
+          jewelryId: foundJewelry._id,
+          amount: req.body.amount
+        };
+
+        foundUser.basket.push(addedJewelry);
+        foundUser.save();
+        console.log('after pushing: ');
+        console.log(foundUser.basket);
+      });
+    }
+  });
 });
 
 module.exports = router;

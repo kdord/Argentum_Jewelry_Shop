@@ -99,7 +99,13 @@ export default class App extends Component {
               render={props => <SignUp {...props} />}
             />
 
-            <Route exact path={'/catalog/:id'} component={ShowJewelry} />
+            <Route
+              exact
+              path={'/catalog/:id'}
+              render={props => (
+                <ShowJewelry {...props} user={this.state.user} />
+              )}
+            />
             <Route exact path={'/update/:id'} component={EditJewelry} />
           </Switch>
         </div>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../style/css/ShowJewelry.css';
+import { FaShoppingCart } from 'react-icons/fa';
 
 export default class ShowJewelry extends Component {
   constructor(props) {
@@ -14,6 +15,8 @@ export default class ShowJewelry extends Component {
     };
     this.handlePlus = this.handlePlus.bind(this);
     this.handleMinus = this.handleMinus.bind(this);
+    this.handleAmountChange = this.handleAmountChange.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +45,31 @@ export default class ShowJewelry extends Component {
   handleMinus() {
     if (this.state.basketAmount === 0) return;
     this.setState({ basketAmount: this.state.basketAmount - 1 });
+  }
+
+  handleAmountChange({ target }) {
+    this.setState({
+      basketAmount: target.value
+    });
+  }
+
+  handleAdd() {
+    console.log('handle add, amount:');
+    console.log(this.state.basketAmount);
+    console.log(this.props.user);
+    if (this.props.user === null) {
+      this.props.history.push('/login');
+    } else {
+      const basketAmount = {
+        amount: this.state.basketAmount
+      };
+      axios.post(
+        '/user/' + this.props.user._id + '/add/' + this.state.jewelry._id,
+        basketAmount
+      );
+    }
+    // console.log(this.props.user);
+    // console.log(this.state.jewelry);
   }
 
   render() {
@@ -112,7 +140,10 @@ export default class ShowJewelry extends Component {
                     >
                       -
                     </button>
-                    <input value={this.state.basketAmount} />
+                    <input
+                      value={this.state.basketAmount}
+                      onChange={this.handleAmountChange}
+                    />
                     <button
                       className='btn btn-secondary basket-btn'
                       onClick={this.handlePlus}
@@ -120,6 +151,12 @@ export default class ShowJewelry extends Component {
                       +
                     </button>
                   </div>
+                  <button
+                    className='toBasket btn btn-secondary ml-4'
+                    onClick={this.handleAdd}
+                  >
+                    В корзину <FaShoppingCart className='ml-2' />
+                  </button>
                 </div>
                 <table className='table table-borderless'>
                   <thead>
