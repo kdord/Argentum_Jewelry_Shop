@@ -44,6 +44,7 @@ router.post(
     next();
   },
   passport.authenticate('local'),
+
   (req, res) => {
     console.log('logged in ', req.user);
     let user = req.user;
@@ -90,6 +91,19 @@ router.post('/:userId/add/', (req, res) => {
 
 router.post('/:userId/delete/:jewelryId', (req, res) => {
   console.log('in .post /delete');
+
+  User.findOne({ _id: req.params.userId }, (err, foundUser) => {
+    if (err) {
+      console.log('Error: ' + err);
+    } else {
+      const newBasket = foundUser.basket.filter(
+        item => item._id !== req.params.jewelryId
+      );
+      console.log(newBasket);
+      foundUser.basket = newBasket;
+      foundUser.save();
+    }
+  });
 });
 
 module.exports = router;

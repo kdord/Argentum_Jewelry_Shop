@@ -67,13 +67,14 @@ export default class Basket extends Component {
     axios
       .post('/user/' + userId + '/delete/' + id)
       .then(res => {
-        this.initialization();
+        // this.initialization();
         console.log('item removed');
       })
       .catch(err => {
         console.log('Error: ');
         console.log(err);
       });
+    window.location.reload();
   }
 
   render() {
