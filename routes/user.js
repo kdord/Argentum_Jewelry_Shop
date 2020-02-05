@@ -79,6 +79,9 @@ router.post('/:userId/add/', (req, res) => {
     if (err) {
       console.log('Error: ' + err);
     } else {
+      foundUser.basket = foundUser.basket.filter(
+        item => item._id !== req.body._id
+      );
       const jewelry = req.body;
 
       foundUser.basket.push(jewelry);
