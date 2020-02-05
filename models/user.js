@@ -37,6 +37,7 @@ const userSchema = new Schema({
 //define schema methods
 userSchema.methods = {
   checkPassword: function(inputPassword) {
+    // return inputPassword === this.password;
     return bcrypt.compareSync(inputPassword, this.password);
   },
   hashPassword: plainTextPassword => {
@@ -47,11 +48,13 @@ userSchema.methods = {
 //define hooks for pre-saving
 
 userSchema.pre('save', function(next) {
+  let User = this;
   if (!this.password) {
     console.log('models/user.js ===== no password provided');
     next();
   } else {
-    console.log('/models/user.js hashPassword in pre save');
+    console.log('/models/user.js WITHOUT  hashPassword in pre save');
+    if (!User.isModified('password')) return next();
     this.password = this.hashPassword(this.password);
     next();
   }
