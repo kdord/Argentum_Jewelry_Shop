@@ -13,6 +13,7 @@ export default class Basket extends Component {
     this.initialization = this.initialization.bind(this);
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleUpdateAmount = this.handleUpdateAmount.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +54,7 @@ export default class Basket extends Component {
           jewelry={jewelry}
           key={index}
           handleRemove={this.handleRemove}
+          changeAmountInDB={this.handleUpdateAmount}
         />
       );
     });
@@ -73,6 +75,24 @@ export default class Basket extends Component {
       .catch(err => {
         console.log('Error: ');
         console.log(err);
+      });
+    window.location.reload();
+  }
+
+  handleUpdateAmount(amount, id) {
+    console.log('Amount update: ');
+    console.log(amount);
+    console.log('Id:');
+    console.log(id);
+    let userId = this.props.match.params.id;
+    const newAmount = { amount: amount };
+    axios
+      .post('/user/' + userId + '/update/' + id, newAmount)
+      .then(res => {
+        console.log('amount updated');
+      })
+      .catch(err => {
+        console.log('Error: ' + err);
       });
     window.location.reload();
   }

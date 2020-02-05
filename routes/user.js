@@ -109,4 +109,48 @@ router.post('/:userId/delete/:jewelryId', (req, res) => {
   });
 });
 
+router.post('/:userId/update/:jewelryId', (req, res) => {
+  console.log('in update amount, amount:');
+  console.log(req.body.amount);
+  const newAmount = req.body.amount;
+  User.findOneAndUpdate(
+    { _id: req.params.userId, 'basket._id': req.params.jewelryId },
+    { $set: { 'basket.$.amount': newAmount } },
+    null,
+    err => {
+      if (err) {
+        console.log('Error: ' + err);
+      } else {
+        console.log('updated');
+      }
+    }
+  );
+
+  // User.findOne({ _id: req.params.userId }, (err, foundUser) => {
+  //   if (err) {
+  //     console.log('Error: ' + err);
+  //   } else {
+  //     foundUser.update(
+  //       { 'basket._id': req.params.jewelryId },
+  //       { $set: { 'basket.$.amount': req.body.amount } }
+  //     );
+
+  // const foundItem = foundUser.basket.find(
+  //   item => item._id === req.params.jewelryId
+  // );
+  // const newBasket = foundUser.basket.filter(
+  //   item => item._id !== req.params.jewelryId
+  // );
+  // console.log(foundItem);
+  // foundItem.amount = req.body.amount;
+  // console.log('found item after changing');
+  // console.log(foundItem);
+  // newBasket.push(foundItem);
+  // console.log(newBasket);
+  // foundUser.basket = newBasket;
+  // foundUser.save();
+  //   }
+  // });
+});
+
 module.exports = router;

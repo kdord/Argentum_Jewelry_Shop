@@ -33,6 +33,7 @@ connection.once('open', () => {
   console.log('Mongo DB is connected!');
 });
 
+mongoose.set('useFindAndModify', false);
 //sessions
 app.use(
   session({ secret: 'argentum', resave: false, saveUninitialized: false })
