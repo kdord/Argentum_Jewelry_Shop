@@ -8,12 +8,11 @@ export default class Basket extends Component {
     super(props);
 
     this.state = {
-      basketList: [],
       basket: []
     };
     this.initialization = this.initialization.bind(this);
-    this.getBasket = this.getBasket.bind(this);
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
   componentDidMount() {
@@ -26,31 +25,11 @@ export default class Basket extends Component {
       //   console.log(res.data);
       if (res.data.user) {
         console.log('Get user in basket');
-        this.setState({ basketList: res.data.user.basket });
-        this.getBasket(this.state.basketList);
+        this.setState({ basket: res.data.user.basket });
       } else {
         console.log('Get user in basket: no user');
-        this.setState({ basketList: null });
+        this.setState({ basket: null });
       }
-    });
-  }
-
-  getBasket(basketList) {
-    basketList.forEach(listItem => {
-      console.log(listItem.jewelryId);
-      let jewelryItem;
-      axios.get('/jewelry/' + listItem.jewelryId).then(res => {
-        // console.log(res.data);
-        jewelryItem = { ...res.data, amount: listItem.amount };
-        // console.log(jewelryItem);
-        this.setState(currState => {
-          const basket = currState.basket.concat(jewelryItem);
-          return {
-            ...currState,
-            basket
-          };
-        });
-      });
     });
   }
 
@@ -69,9 +48,33 @@ export default class Basket extends Component {
 
   basketJewelryList = () => {
     return this.state.basket.map((jewelry, index) => {
-      return <BasketsItem jewelry={jewelry} key={index} />;
+      return (
+        <BasketsItem
+          jewelry={jewelry}
+          key={index}
+          handleRemove={this.handleRemove}
+        />
+      );
     });
   };
+
+  handleRemove(id) {
+    console.log('in handleRemove, id:');
+    console.log(id);
+    console.log('in handleRemove, userID:');
+    console.log(this.props.match.params.id);
+    let userId = this.props.match.params.id;
+    axios
+      .post('/user/' + userId + '/delete/' + id)
+      .then(res => {
+        this.initialization();
+        console.log('item removed');
+      })
+      .catch(err => {
+        console.log('Error: ');
+        console.log(err);
+      });
+  }
 
   render() {
     const toPay = this.calculateTotalPrice();
@@ -89,6 +92,7 @@ export default class Basket extends Component {
               <th>Кількість</th>
               <th>Ціна</th>
               <th>Всього</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>

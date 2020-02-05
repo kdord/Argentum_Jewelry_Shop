@@ -60,13 +60,11 @@ export default class ShowJewelry extends Component {
     if (this.props.user === null) {
       this.props.history.push('/login');
     } else {
-      const basketAmount = {
+      const basketItem = {
+        ...this.state.jewelry,
         amount: this.state.basketAmount
       };
-      axios.post(
-        '/user/' + this.props.user._id + '/add/' + this.state.jewelry._id,
-        basketAmount
-      );
+      axios.post('/user/' + this.props.user._id + '/add/', basketItem);
     }
     // console.log(this.props.user);
     // console.log(this.state.jewelry);

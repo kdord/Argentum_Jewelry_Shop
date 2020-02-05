@@ -70,7 +70,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.post('/:userId/add/:jewelryId', (req, res) => {
+router.post('/:userId/add/', (req, res) => {
   console.log('in .post /add');
   console.log('req.body:');
   console.log(req.body);
@@ -78,21 +78,18 @@ router.post('/:userId/add/:jewelryId', (req, res) => {
     if (err) {
       console.log('Error: ' + err);
     } else {
-      Jewelry.findOne({ _id: req.params.jewelryId }, (err, foundJewelry) => {
-        console.log(foundUser.basket);
-        console.log(foundJewelry._id);
-        const addedJewelry = {
-          jewelryId: foundJewelry._id,
-          amount: req.body.amount
-        };
+      const jewelry = req.body;
 
-        foundUser.basket.push(addedJewelry);
-        foundUser.save();
-        console.log('after pushing: ');
-        console.log(foundUser.basket);
-      });
+      foundUser.basket.push(jewelry);
+      foundUser.save();
+      console.log('after pushing: ');
+      console.log(foundUser.basket);
     }
   });
+});
+
+router.post('/:userId/delete/:jewelryId', (req, res) => {
+  console.log('in .post /delete');
 });
 
 module.exports = router;
