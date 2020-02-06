@@ -5,7 +5,7 @@ import fbLogo from '../images/fbLogo.png';
 import '../style/css/HeaderStyle.css';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
-import { FaUser, FaShoppingCart } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
 
 import axios from 'axios';
 
@@ -52,25 +52,40 @@ class Header extends Component {
           </div>
           <div className='auth d-flex'>
             <Dropdown drop={'left'}>
-              <Dropdown.Toggle variant='light' className='auth-dropdown'>
-                <FaUser />
+              <Dropdown.Toggle
+                variant='light'
+                className='auth-dropdown e-caret-hide'
+              >
+                {user ? <FaUserCheck className='dropUserIcon' /> : <FaUser />}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>
-                <Dropdown.Item href='/login'>Login</Dropdown.Item>
-                <Dropdown.Item href='/signup'>Sign Up</Dropdown.Item>
-                <Dropdown.Item onClick={this.logout}>LogOut</Dropdown.Item>
+                {!user && (
+                  <>
+                    <Dropdown.Item href='/login'>Увійти</Dropdown.Item>
+                    <Dropdown.Item href='/signup'>
+                      Зареєструватись
+                    </Dropdown.Item>
+                  </>
+                )}
+                {user && (
+                  <>
+                    <Dropdown.Item disabled>
+                      {user.firstName} {user.lastName}
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={this.logout}>Вийти</Dropdown.Item>
+                  </>
+                )}
               </Dropdown.Menu>
             </Dropdown>
-            {user ? (
-              <>
-                <p>{user.firstName}</p>{' '}
-                <Link to={`/basket/${user._id}`} className='ml-3'>
-                  <FaShoppingCart />
-                </Link>{' '}
-              </>
-            ) : (
-              ''
+            {user && (
+              <Link
+                to={`/basket/${user._id}`}
+                className='shopingBasket'
+                // style={{ color: 'black' }}
+              >
+                <FaShoppingCart />
+              </Link>
             )}
           </div>
         </div>
