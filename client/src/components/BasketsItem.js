@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
+import '../style/css/BasketItemStyle.css';
 
 export default class BasketsItem extends Component {
   constructor(props) {
@@ -44,13 +45,9 @@ export default class BasketsItem extends Component {
   render() {
     const { jewelry } = this.props;
     return (
-      <tr>
-        <td>
-          <img
-            style={{ width: '100px' }}
-            alt={jewelry.jewelry_name}
-            src={jewelry.jewelry_img_1}
-          />
+      <tr className='itemTr'>
+        <td className='imgTd'>
+          <img alt={jewelry.jewelry_name} src={jewelry.jewelry_img_1} />
         </td>
         <td>{jewelry.jewelry_name}</td>
         <td>
@@ -83,7 +80,7 @@ export default class BasketsItem extends Component {
         </td>
         <td>{jewelry.jewelry_price} UAN</td>
         <td>{jewelry.jewelry_price * jewelry.amount} UAN </td>
-        <td>
+        <td className='trashBtnTd'>
           <button className='btn'>
             <FaTrashAlt onClick={this.handleRemove} />
           </button>

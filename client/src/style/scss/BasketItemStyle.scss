@@ -1,0 +1,18 @@
+.itemTr {
+  align-items: center;
+  td {
+    vertical-align: middle;
+    text-align: center;
+  }
+  .imgTd {
+    width: 10%;
+    text-align: center;
+    img {
+      width: 100%;
+    }
+  }
+  .trashBtnTd {
+    // width: 5%;
+    padding: 0;
+  }
+}

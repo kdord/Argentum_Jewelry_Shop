@@ -1,0 +1,14 @@
+.itemTr {
+  align-items: center; }
+  .itemTr td {
+    vertical-align: middle;
+    text-align: center; }
+  .itemTr .imgTd {
+    width: 10%;
+    text-align: center; }
+    .itemTr .imgTd img {
+      width: 100%; }
+  .itemTr .trashBtnTd {
+    padding: 0; }
+
+/*# sourceMappingURL=BasketItemStyle.css.map */

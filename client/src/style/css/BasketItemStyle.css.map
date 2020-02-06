@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,OAAQ;EACN,WAAW,EAAE,MAAM;EACnB,UAAG;IACD,cAAc,EAAE,MAAM;IACtB,UAAU,EAAE,MAAM;EAEpB,cAAO;IACL,KAAK,EAAE,GAAG;IACV,UAAU,EAAE,MAAM;IAClB,kBAAI;MACF,KAAK,EAAE,IAAI;EAGf,mBAAY;IAEV,OAAO,EAAE,CAAC",
+"sources": ["../scss/BasketItemStyle.scss"],
+"names": [],
+"file": "BasketItemStyle.css"
+}
