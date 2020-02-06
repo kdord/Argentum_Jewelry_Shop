@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const nodemailer = require('nodemailer');
 
 const Jewelry = require('../models/jewelry');
 const User = require('../models/user');
@@ -160,6 +161,35 @@ router.post('/:userId/update/:jewelryId', (req, res) => {
   // foundUser.save();
   //   }
   // });
+});
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD
+  }
+});
+
+router.post('/send', (req, res) => {
+  console.log('in /send, req.body:');
+  console.log(req.body);
+  let emailText = JSON.stringify(req.body);
+
+  let mailOptions = {
+    from: process.env.EMAIL,
+    to: 'katya.koliada49@gmail.com',
+    subject: 'Замовлення',
+
+    text: emailText
+  };
+
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      return console.log('Error: ' + err);
+    }
+    return console.log('Email sent!!!!');
+  });
 });
 
 module.exports = router;

@@ -5,6 +5,8 @@ const morgan = require('morgan');
 const session = require('express-session');
 const passport = require('./passport');
 
+require('dotenv').config();
+
 const PORT = process.env.PORT || 9000;
 
 mongoose.Promise = global.Promise; //???

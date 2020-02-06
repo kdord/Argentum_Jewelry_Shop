@@ -23,6 +23,7 @@ export default class Basket extends Component {
     this.handleRemove = this.handleRemove.bind(this);
     this.handleUpdateAmount = this.handleUpdateAmount.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSend = this.handleSend.bind(this);
   }
 
   componentDidMount() {
@@ -108,6 +109,33 @@ export default class Basket extends Component {
 
   handleInputChange({ target }) {
     this.setState({ [target.name]: target.value });
+  }
+  handleSend() {
+    let email = {
+      firstName: this.state.user.firstName,
+      lastName: this.state.user.lastName,
+      email: this.state.user.email,
+      basket: [],
+      phoneNumber: this.state.phoneNumber,
+      region: this.state.region,
+      city: this.state.city,
+      postOfficeNumber: this.state.postOfficeNumber
+    };
+    this.state.basket.forEach(item => {
+      let basketItem = {
+        name: item.jewelry_name,
+        amount: item.amount
+      };
+      email.basket.push(basketItem);
+    });
+    axios
+      .post('/user/send', email)
+      .then(res => {
+        console.log('in .then send request');
+      })
+      .catch(err => {
+        console.log('Error: ' + err);
+      });
   }
 
   render() {
@@ -249,7 +277,9 @@ export default class Basket extends Component {
             </div>
           </div>
           <div className='toOrderBtnContainer'>
-            <Link className='btn btn-secondary'>Оформити замовлення</Link>
+            <Link className='btn btn-secondary' onClick={this.handleSend}>
+              Оформити замовлення
+            </Link>
           </div>
         </div>
       </div>
