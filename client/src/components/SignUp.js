@@ -11,6 +11,7 @@ export default class SignUp extends Component {
       firstName: '',
       lastName: '',
       password: '',
+      confirmPassword: '',
       basket: []
     };
     this.handleChange = this.handleChange.bind(this);
@@ -25,6 +26,11 @@ export default class SignUp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    const { password, confirmPassword } = this.state;
+    if (password !== confirmPassword) {
+      this.setState({ password: '', confirmPassword: '' });
+      return alert('Паролі не співпадають. Повторіть будь ласка введення');
+    }
     console.log('signup form, email: ');
     console.log(this.state.email);
 
@@ -41,7 +47,7 @@ export default class SignUp extends Component {
       .then(res => {
         console.log(res);
         if (res.data) {
-          console.log('successful signup');
+          console.log(res.data);
         } else {
           console.log('signup error');
         }
@@ -104,6 +110,16 @@ export default class SignUp extends Component {
               name='password'
               value={this.state.password}
               placeholder='Пароль'
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className='form-group'>
+            <input
+              className='form-control'
+              type='password'
+              name='confirmPassword'
+              value={this.state.confirmPassword}
+              placeholder='Підтвердіть пароль'
               onChange={this.handleChange}
             />
           </div>
