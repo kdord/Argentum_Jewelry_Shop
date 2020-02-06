@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import BasketsItem from './BasketsItem';
 import { MdPhoto } from 'react-icons/md';
+import '../style/css/BasketStyle.css';
 
 export default class Basket extends Component {
   constructor(props) {
@@ -101,11 +102,11 @@ export default class Basket extends Component {
     const toPay = this.calculateTotalPrice();
 
     return (
-      <div>
+      <div className='basket-container'>
         <h2>Корзина</h2>
         <table className='table'>
           <thead>
-            <tr>
+            <tr className='tableHeader'>
               <th>
                 <MdPhoto />{' '}
               </th>
@@ -118,12 +119,18 @@ export default class Basket extends Component {
           </thead>
           <tbody>
             {this.basketJewelryList()}
-            <tr>
-              <td colSpan='4'>Всього</td>
-              <td>{toPay} UAN</td>
+            <tr className='total'>
+              <td className='totalAmountHeader ' colSpan='4'>
+                Всього
+              </td>
+              <td colSpan='1' className='toPay'>
+                {toPay} UAN
+              </td>
+              <td></td>
             </tr>
           </tbody>
         </table>
+        <hr />
       </div>
     );
   }

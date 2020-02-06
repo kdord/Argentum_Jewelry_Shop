@@ -1,0 +1,18 @@
+.basket-container {
+  margin: 5vh 10vw; }
+  .basket-container h2 {
+    margin-bottom: 2rem;
+    text-align: center; }
+  .basket-container .tableHeader {
+    text-align: center; }
+  .basket-container .total {
+    font-weight: 600;
+    font-size: 1.3rem; }
+  .basket-container .totalAmountHeader {
+    text-align: end;
+    padding-top: 2rem; }
+  .basket-container .toPay {
+    text-align: center;
+    padding-top: 2rem; }
+
+/*# sourceMappingURL=BasketStyle.css.map */

@@ -1,0 +1,23 @@
+.basket-container {
+  margin: 5vh 10vw;
+
+  h2 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .tableHeader {
+    text-align: center;
+  }
+  .total {
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+  .totalAmountHeader {
+    text-align: end;
+    padding-top: 2rem;
+  }
+  .toPay {
+    text-align: center;
+    padding-top: 2rem;
+  }
+}
