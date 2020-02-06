@@ -1,10 +1,10 @@
+h2 {
+  margin-bottom: 2rem;
+  text-align: center;
+}
 .basket-container {
   margin: 5vh 10vw;
 
-  h2 {
-    margin-bottom: 2rem;
-    text-align: center;
-  }
   .tableHeader {
     text-align: center;
   }
@@ -19,5 +19,61 @@
   .toPay {
     text-align: center;
     padding-top: 2rem;
+  }
+}
+.orderContainer {
+  margin: 5vh 10vw;
+  margin-bottom: 10rem;
+  .orderDetails {
+    display: inline-flex;
+    width: 100%;
+    table {
+      margin: 0;
+    }
+    input,
+    select {
+    }
+    td {
+      width: 300px;
+      text-align: center;
+    }
+
+    .personalData {
+      width: 50%;
+      tr {
+        line-height: 2.4;
+      }
+    }
+
+    .deliveryData {
+      width: 50%;
+    }
+  }
+  .toOrderBtnContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    .btn {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .orderContainer {
+    .orderDetails {
+      display: block;
+      .personalData {
+        width: 100%;
+      }
+      .deliveryData {
+        width: 100%;
+      }
+    }
+    .toOrderBtnContainer {
+      .btn {
+        width: 100%;
+      }
+    }
   }
 }

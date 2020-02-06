@@ -3,18 +3,26 @@ import axios from 'axios';
 import BasketsItem from './BasketsItem';
 import { MdPhoto } from 'react-icons/md';
 import '../style/css/BasketStyle.css';
+import { Link } from 'react-router-dom';
+import { FaEraser } from 'react-icons/fa';
 
 export default class Basket extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      basket: []
+      basket: [],
+      user: {},
+      phoneNumber: '',
+      region: '',
+      city: '',
+      postOfficeNumber: ''
     };
     this.initialization = this.initialization.bind(this);
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.handleUpdateAmount = this.handleUpdateAmount.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
@@ -27,7 +35,7 @@ export default class Basket extends Component {
       //   console.log(res.data);
       if (res.data.user) {
         console.log('Get user in basket');
-        this.setState({ basket: res.data.user.basket });
+        this.setState({ basket: res.data.user.basket, user: res.data.user });
       } else {
         console.log('Get user in basket: no user');
         this.setState({ basket: null });
@@ -98,39 +106,152 @@ export default class Basket extends Component {
     window.location.reload();
   }
 
+  handleInputChange({ target }) {
+    this.setState({ [target.name]: target.value });
+  }
+
   render() {
     const toPay = this.calculateTotalPrice();
+    const { user } = this.state;
 
     return (
-      <div className='basket-container'>
-        <h2>Корзина</h2>
-        <table className='table'>
-          <thead>
-            <tr className='tableHeader'>
-              <th>
-                <MdPhoto />{' '}
-              </th>
-              <th>Назва</th>
-              <th>Кількість</th>
-              <th>Ціна</th>
-              <th>Всього</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.basketJewelryList()}
-            <tr className='total'>
-              <td className='totalAmountHeader ' colSpan='4'>
-                Всього
-              </td>
-              <td colSpan='1' className='toPay'>
-                {toPay} UAN
-              </td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-        <hr />
+      <div>
+        <div className='basket-container'>
+          <h2>Корзина</h2>
+          <table className='table'>
+            <thead>
+              <tr className='tableHeader'>
+                <th>
+                  <MdPhoto />{' '}
+                </th>
+                <th>Назва</th>
+                <th>Кількість</th>
+                <th>Ціна</th>
+                <th>Всього</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.basketJewelryList()}
+              <tr className='total'>
+                <td className='totalAmountHeader ' colSpan='4'>
+                  Всього
+                </td>
+                <td colSpan='1' className='toPay'>
+                  {toPay} UAN
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <hr />
+          {/* <div className='toOrderBtnContainer'>
+            <Link className='btn btn-secondary'>Оформити замовлення</Link>
+          </div> */}
+        </div>
+
+        <div className='orderContainer'>
+          <h2>Оформлення</h2>
+          <div className='orderDetails'>
+            <div className='personalData'>
+              <table className='table'>
+                <tbody>
+                  <tr>
+                    <th scope='row'>Ім'я</th>
+                    <td>{user.firstName}</td>
+                  </tr>
+                  <tr>
+                    <th scope='row'>Прізвище</th>
+                    <td>{user.lastName}</td>
+                  </tr>
+                  <tr>
+                    <th>Номер телефону</th>
+                    <td>
+                      <input
+                        className='form-control'
+                        name='phoneNumber'
+                        value={this.state.phoneNumber}
+                        onChange={this.handleInputChange}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className='deliveryData'>
+              <table className='table'>
+                <tbody>
+                  <tr>
+                    <th>Область</th>
+                    <td>
+                      <select
+                        className='form-control'
+                        name='region'
+                        value={this.state.region}
+                        onChange={this.handleInputChange}
+                      >
+                        <option value=''>-</option>
+                        <option value='Вінницька'>Вінницька</option>
+                        <option value='Волинська'>Волинська</option>
+                        <option value='Дніпропетровська'>
+                          Дніпропетровська
+                        </option>
+                        <option value='Донецька'>Донецька</option>
+                        <option value='Житомирська'>Житомирська</option>
+                        <option value='Закарпатська'>Закарпатська</option>
+                        <option value='Запорізька'>Запорізька</option>
+                        <option value='Івано-Франківська'>
+                          Івано-Франківська
+                        </option>
+                        <option value='Київська'>Київська</option>
+                        <option value='Кіровоградська'>Кіровоградська</option>
+                        <option value='Луганська'>Луганська</option>
+                        <option value='Львівська'>Львівська</option>
+                        <option value='Миколаївська'>Миколаївська</option>
+                        <option value='Одеська'>Одеська</option>
+                        <option value='Полтавська'>Полтавська</option>
+                        <option value='Рівненська'>Рівненська</option>
+                        <option value='Сумська'>Сумська</option>
+                        <option value='Тернопільська'>Тернопільська</option>
+                        <option value='Харківська'>Харківська</option>
+                        <option value='Херсонська'>Херсонська</option>
+                        <option value='Хмельницька'>Хмельницька</option>
+                        <option value='Черкаська'>Черкаська</option>
+                        <option value='Чернівецька'>Чернівецька</option>
+                        <option value='Чернігівська'>Чернігівська</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Місто</th>
+                    <td>
+                      <input
+                        className='form-control'
+                        name='city'
+                        value={this.state.city}
+                        onChange={this.handleInputChange}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Номер відділення Нової Пошти</th>
+                    <td>
+                      <input
+                        className='form-control'
+                        name='postOfficeNumber'
+                        value={this.state.postOfficeNumber}
+                        onChange={this.handleInputChange}
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className='toOrderBtnContainer'>
+            <Link className='btn btn-secondary'>Оформити замовлення</Link>
+          </div>
+        </div>
       </div>
     );
   }

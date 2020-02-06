@@ -1,8 +1,9 @@
+h2 {
+  margin-bottom: 2rem;
+  text-align: center; }
+
 .basket-container {
   margin: 5vh 10vw; }
-  .basket-container h2 {
-    margin-bottom: 2rem;
-    text-align: center; }
   .basket-container .tableHeader {
     text-align: center; }
   .basket-container .total {
@@ -14,5 +15,39 @@
   .basket-container .toPay {
     text-align: center;
     padding-top: 2rem; }
+
+.orderContainer {
+  margin: 5vh 10vw;
+  margin-bottom: 10rem; }
+  .orderContainer .orderDetails {
+    display: inline-flex;
+    width: 100%; }
+    .orderContainer .orderDetails table {
+      margin: 0; }
+    .orderContainer .orderDetails td {
+      width: 300px;
+      text-align: center; }
+    .orderContainer .orderDetails .personalData {
+      width: 50%; }
+      .orderContainer .orderDetails .personalData tr {
+        line-height: 2.4; }
+    .orderContainer .orderDetails .deliveryData {
+      width: 50%; }
+  .orderContainer .toOrderBtnContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem; }
+    .orderContainer .toOrderBtnContainer .btn {
+      width: 60%; }
+
+@media (max-width: 1000px) {
+  .orderContainer .orderDetails {
+    display: block; }
+    .orderContainer .orderDetails .personalData {
+      width: 100%; }
+    .orderContainer .orderDetails .deliveryData {
+      width: 100%; }
+  .orderContainer .toOrderBtnContainer .btn {
+    width: 100%; } }
 
 /*# sourceMappingURL=BasketStyle.css.map */
