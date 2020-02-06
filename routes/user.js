@@ -18,21 +18,30 @@ router.post('/signup', (req, res) => {
       return res.json({
         error: `Sorry, already a user with the username ${username}`
       });
+    } else {
+      User.findOne({ email: email }, (err, foundUser) => {
+        if (foundUser) {
+          return res.json({
+            error: `Sorry, already a user with the email ${email}`
+          });
+        }
+
+        const newUser = new User({
+          email: email,
+          username: username,
+          firstName: firstName,
+          lastName: lastName,
+          password: password,
+          basket: basket
+        });
+        newUser.save((err, savedUser) => {
+          console.log('in .save');
+          console.log(newUser);
+          if (err) return res.json(err);
+          return res.json(savedUser);
+        });
+      });
     }
-    const newUser = new User({
-      email: email,
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-      password: password,
-      basket: basket
-    });
-    newUser.save((err, savedUser) => {
-      console.log('in .save');
-      console.log(newUser);
-      if (err) return res.json(err);
-      return res.json(savedUser);
-    });
   });
 });
 
