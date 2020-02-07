@@ -1,10 +1,13 @@
 .card-link {
   .card {
+    height: 350px;
     border-radius: 0;
     padding: 0;
+
     border: 0;
     color: #000;
     transition: 0.5s;
+
     &:hover {
       -webkit-box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.48);
       box-shadow: 10px 10px 20px -10px rgba(0, 0, 0, 0.48);
@@ -13,10 +16,21 @@
       border-radius: 0;
       width: 100%;
     }
+    .card-title {
+      padding: 0 5px;
+      margin: 0;
+    }
     .card-body {
       padding: 0;
       padding-top: 15px;
+
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .priceAndLine {
+        padding-bottom: 10px;
+      }
     }
   }
 }

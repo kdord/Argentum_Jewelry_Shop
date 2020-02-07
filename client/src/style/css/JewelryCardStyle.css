@@ -1,4 +1,5 @@
 .card-link .card {
+  height: 350px;
   border-radius: 0;
   padding: 0;
   border: 0;
@@ -10,9 +11,17 @@
   .card-link .card .card-img {
     border-radius: 0;
     width: 100%; }
+  .card-link .card .card-title {
+    padding: 0 5px;
+    margin: 0; }
   .card-link .card .card-body {
     padding: 0;
     padding-top: 15px;
-    text-align: center; }
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; }
+    .card-link .card .card-body .priceAndLine {
+      padding-bottom: 10px; }
 
 /*# sourceMappingURL=JewelryCardStyle.css.map */

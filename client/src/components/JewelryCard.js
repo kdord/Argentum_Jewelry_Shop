@@ -17,8 +17,10 @@ export default class JewelryCard extends Component {
           />
           <Card.Body>
             <Card.Title>{jewelry.jewelry_name}</Card.Title>
-            <hr />
-            <h6>{jewelry.jewelry_price} UAN</h6>
+            <div className='priceAndLine'>
+              <hr />
+              <h6>{jewelry.jewelry_price} UAN</h6>
+            </div>
 
             {/* <Link className='card-btn-link btn ' to={`/catalog/${jewelry._id}`}>
             Дізнатись більше
