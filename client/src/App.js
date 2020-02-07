@@ -16,6 +16,7 @@ import axios from 'axios';
 
 import './style/css/AppStyle.css';
 import Basket from './components/Basket';
+import Footer from './components/Footer';
 
 export default class App extends Component {
   constructor(props) {
@@ -57,7 +58,9 @@ export default class App extends Component {
       <Router>
         <div className='app-root'>
           <Header user={this.state.user} updateUser={this.updateUser} />
-          <NavbarDev />
+          {this.state.user && this.state.user.username === 'admin' && (
+            <NavbarDev user={this.state.user} />
+          )}
           <Navbar />
           <Switch>
             <Route exact path={'/'} component={LandingPage} />
@@ -114,6 +117,7 @@ export default class App extends Component {
               render={props => <Basket {...props} user={this.state.user} />}
             />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import logo from '../images/logoNew.png';
 import instaLogo from '../images/logoInstagram.png';
 import fbLogo from '../images/fbLogo.png';
-import '../style/css/HeaderStyle.css';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { FaUser, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
+import '../style/css/HeaderStyle.css';
 
 import axios from 'axios';
 
