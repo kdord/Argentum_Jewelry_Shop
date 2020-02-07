@@ -5,7 +5,7 @@ footer.footer {
   height: 300px;
 
   margin-top: 3rem;
-  padding: 1rem 2rem;
+  padding: 1rem 15rem;
   -webkit-box-shadow: inset 0px 14px 25px -20px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: inset 0px 14px 25px -20px rgba(0, 0, 0, 0.3);
   box-shadow: inset 0px 14px 25px -20px rgba(0, 0, 0, 0.3);
@@ -16,8 +16,9 @@ footer.footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     img {
-      width: 100%;
+      width: 70%;
     }
     .insta-fb-icons {
       display: flex;
@@ -63,10 +64,9 @@ footer.footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    align-items: center;
     height: 100%;
-    width: 30%;
-    padding-left: 10%;
+    width: 20%;
 
     a {
       text-transform: uppercase;
@@ -77,6 +77,28 @@ footer.footer {
         color: #5d7253;
         text-decoration: none;
       }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  footer.footer {
+    padding: 1rem 5rem;
+    .footer-left {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+@media (max-width: 800px) {
+  footer.footer {
+    padding: 1rem;
+    // display: block;
+    font-size: smaller;
+    .footer-left,
+    .footer-center,
+    .footer-right {
     }
   }
 }
