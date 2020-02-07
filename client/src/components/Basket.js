@@ -16,7 +16,8 @@ export default class Basket extends Component {
       phoneNumber: '',
       region: '',
       city: '',
-      postOfficeNumber: ''
+      postOfficeNumber: '',
+      paymentMethod: ''
     };
     this.initialization = this.initialization.bind(this);
     this.calculateTotalPrice = this.calculateTotalPrice.bind(this);
@@ -119,7 +120,8 @@ export default class Basket extends Component {
       phoneNumber: this.state.phoneNumber,
       region: this.state.region,
       city: this.state.city,
-      postOfficeNumber: this.state.postOfficeNumber
+      postOfficeNumber: this.state.postOfficeNumber,
+      paymentMethod: this.state.paymentMethod
     };
     this.state.basket.forEach(item => {
       let basketItem = {
@@ -177,7 +179,6 @@ export default class Basket extends Component {
             <Link className='btn btn-secondary'>Оформити замовлення</Link>
           </div> */}
         </div>
-
         <div className='orderContainer'>
           <h2>Оформлення</h2>
           <div className='orderDetails'>
@@ -201,6 +202,21 @@ export default class Basket extends Component {
                         value={this.state.phoneNumber}
                         onChange={this.handleInputChange}
                       />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Спосіб оплати</th>
+                    <td>
+                      <select
+                        className='form-control'
+                        name='paymentMethod'
+                        value={this.state.paymentMethod}
+                        onChange={this.handleInputChange}
+                      >
+                        <option value=''>-</option>
+                        <option value='card'>На карту</option>
+                        <option value='onReceipt'>При отриманні</option>
+                      </select>
                     </td>
                   </tr>
                 </tbody>
@@ -282,6 +298,14 @@ export default class Basket extends Component {
             </Link>
           </div>
         </div>
+        {/* <p>
+          {req.body.firstName} {req.body.lastName}
+        </p>{' '}
+        <br />
+        <p>{req.body.email}</p>
+        <br />
+        <p>{req.body.phoneNumber}</p>
+        <br /> */}
       </div>
     );
   }
