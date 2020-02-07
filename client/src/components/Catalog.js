@@ -70,7 +70,7 @@ export default class Catalog extends Component {
   jewelryList = () => {
     return this.state.jewelry.map((jewelry, index) => {
       return (
-        <div className='col' key={index}>
+        <div className='col-10 col-sm-6 col-md-4 col-lg-3 m-auto' key={index}>
           <JewelryCard jewelry={jewelry} />
         </div>
       );
@@ -81,12 +81,7 @@ export default class Catalog extends Component {
     return (
       <div className='catalog-box'>
         <div className='container'>
-          <div
-            className='catalog row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4'
-            style={{ display: 'flex' }}
-          >
-            {this.jewelryList()}
-          </div>
+          <div className='catalog row'>{this.jewelryList()}</div>
         </div>
       </div>
     );

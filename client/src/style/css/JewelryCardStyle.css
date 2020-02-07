@@ -24,4 +24,8 @@
     .card-link .card .card-body .priceAndLine {
       padding-bottom: 10px; }
 
+@media (max-width: 576px) {
+  .card-link .card {
+    height: 550px; } }
+
 /*# sourceMappingURL=JewelryCardStyle.css.map */

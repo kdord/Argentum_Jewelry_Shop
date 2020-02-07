@@ -34,3 +34,11 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .card-link {
+    .card {
+      height: 550px;
+    }
+  }
+}
