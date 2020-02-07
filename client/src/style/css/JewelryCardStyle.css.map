@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AACE,gBAAM;EACJ,aAAa,EAAE,CAAC;EAChB,OAAO,EAAE,CAAC;EACV,MAAM,EAAE,CAAC;EACT,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,IAAI;EAChB,sBAAQ;IACN,kBAAkB,EAAE,wCAAwC;IAC5D,UAAU,EAAE,wCAAwC;EAEtD,0BAAU;IACR,aAAa,EAAE,CAAC;IAChB,KAAK,EAAE,IAAI;EAEb,2BAAW;IACT,OAAO,EAAE,CAAC;IACV,WAAW,EAAE,IAAI;IACjB,UAAU,EAAE,MAAM",
+"sources": ["../scss/JewelryCardStyle.scss"],
 "names": [],
 "file": "JewelryCardStyle.css"
 }
