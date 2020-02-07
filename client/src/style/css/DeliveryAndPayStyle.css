@@ -1,0 +1,8 @@
+.deliveryAndPay {
+  padding: 2vh 15vw; }
+
+@media (max-width: 1100px) {
+  .deliveryAndPay {
+    padding: 2vh 10vw; } }
+
+/*# sourceMappingURL=DeliveryAndPayStyle.css.map */

@@ -11,6 +11,7 @@ import EditJewelry from './components/EditJewelry';
 import Header from './components/Header';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import DeliveryAndPay from './components/DeliveryAndPay';
 
 import axios from 'axios';
 
@@ -115,6 +116,13 @@ export default class App extends Component {
               exact
               path={'/basket/:id'}
               render={props => <Basket {...props} user={this.state.user} />}
+            />
+            <Route
+              exact
+              path={'/delivery'}
+              render={props => (
+                <DeliveryAndPay {...props} user={this.state.user} />
+              )}
             />
           </Switch>
           <Footer />

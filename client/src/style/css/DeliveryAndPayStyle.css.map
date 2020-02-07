@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,eAAgB;EACd,OAAO,EAAE,QAAQ;;AAGnB,0BAA2B;EACzB,eAAgB;IACd,OAAO,EAAE,QAAQ",
+"sources": ["../scss/DeliveryAndPayStyle.scss"],
+"names": [],
+"file": "DeliveryAndPayStyle.css"
+}
