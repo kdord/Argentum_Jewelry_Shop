@@ -34,11 +34,10 @@ footer.footer {
     flex-direction: column;
     justify-content: center;
     align-items: center; }
-    footer.footer .footer-center .deliveryAndPay {
+    footer.footer .footer-center .deliveryAndPayLink {
       color: black;
-      text-transform: uppercase;
-      box-shadow: none; }
-      footer.footer .footer-center .deliveryAndPay:hover {
+      text-transform: uppercase; }
+      footer.footer .footer-center .deliveryAndPayLink:hover {
         color: #5d7253;
         text-decoration: none; }
     footer.footer .footer-center .schedule {

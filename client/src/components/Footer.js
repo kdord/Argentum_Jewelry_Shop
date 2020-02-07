@@ -27,7 +27,7 @@ export default class Footer extends Component {
           </div>
         </div>
         <div className='footer-center'>
-          <Link to='/delivery' className='deliveryAndPay'>
+          <Link to='/delivery' className='deliveryAndPayLink'>
             Доставка та Оплата
           </Link>
           <div className='schedule'>

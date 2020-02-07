@@ -79,12 +79,14 @@ export default class Catalog extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <div
-          className='catalog row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4'
-          style={{ display: 'flex' }}
-        >
-          {this.jewelryList()}
+      <div className='catalog-box'>
+        <div className='container'>
+          <div
+            className='catalog row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4'
+            style={{ display: 'flex' }}
+          >
+            {this.jewelryList()}
+          </div>
         </div>
       </div>
     );
