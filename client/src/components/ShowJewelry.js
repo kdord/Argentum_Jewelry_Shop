@@ -72,19 +72,22 @@ export default class ShowJewelry extends Component {
 
   render() {
     const { jewelry } = this.state;
-
+    const { user } = this.props;
     return (
       <div className='container mt-5 mb-5'>
-        <div className='jewelry-show-btns mb-3'>
-          <Button variant='light' block>
-            <Link className='jewelry-show-btn' to={`/update/${jewelry._id}`}>
-              Редагувати
-            </Link>
-          </Button>
-          <Button variant='light' block onClick={() => this.handleRemove()}>
-            Видалити
-          </Button>
-        </div>
+        {user && user.username === 'admin' && (
+          <div className='jewelry-show-btns mb-3'>
+            <Button variant='light' block>
+              <Link className='jewelry-show-btn' to={`/update/${jewelry._id}`}>
+                Редагувати
+              </Link>
+            </Button>
+            <Button variant='light' block onClick={() => this.handleRemove()}>
+              Видалити
+            </Button>
+          </div>
+        )}
+
         <div className='jewelry-show-main d-flex'>
           {/* <div className='jewelry-show-main-img' style={{ width: '25rem' }}>
           </div> */}
