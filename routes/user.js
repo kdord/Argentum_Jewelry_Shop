@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const Jewelry = require('../models/jewelry');
 const User = require('../models/user');
@@ -35,10 +37,21 @@ router.post('/signup', (req, res) => {
           password: password,
           basket: basket
         });
+        const emailText = `Дякуємо за реєстрацію. Ваші логін - ${username}, пароль - ${password} `;
+        const signUpEmail = {
+          to: email,
+          from: process.env.EMAIL,
+          subject: 'Реєстрація',
+          text: emailText
+          // html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+        };
+        sgMail.send(signUpEmail).then(console.log('Sign up Email  Sent'));
+
         newUser.save((err, savedUser) => {
           console.log('in .save');
           console.log(newUser);
           if (err) return res.json(err);
+
           return res.json(savedUser);
         });
       });
@@ -163,33 +176,61 @@ router.post('/:userId/update/:jewelryId', (req, res) => {
   // });
 });
 
-let transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASSWORD
-  }
-});
+// let transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: process.env.EMAIL,
+//     pass: process.env.PASSWORD
+//   }
+// });
 
 router.post('/send', (req, res) => {
   console.log('in /send, req.body:');
   console.log(req.body);
   let emailText = JSON.stringify(req.body);
+  // let emailHtml =
+  //   '<p>{{req.body.firstName}} {{req.body.lastName}}</p><br /><p>{req.body.email}</p><br /><p>{req.body.phoneNumber}</p><br />';
 
-  let mailOptions = {
+  // let mailOptions = {
+  //   from: process.env.EMAIL,
+  //   to: 'katya.koliada49@gmail.com',
+  //   subject: 'Замовлення',
+  //   html: emailHtml
+  //   // text: emailText
+  // };
+
+  // transporter.sendMail(mailOptions, (err, data) => {
+  //   if (err) {
+  //     return console.log('Error: ' + err);
+  //   }
+  //   return console.log('Email sent!!!!');
+  // });
+  let clientEmailText;
+  if (req.body.paymentMethod === 'card') {
+    clientEmailText =
+      'Дякуємо за замовлення. Найближчим часом Вам буде надіслано реквізити для оплати. Гарного Вам дня!';
+  } else {
+    clientEmailText =
+      'Дякуємо за замовлення. Найближчим часом Вам буде надіслано номер товарно-транспортної накладної для відстежування посилки. Гарного Вам дня!';
+  }
+  const emailToAdmin = {
+    to: process.env.ADMINEMAIL,
     from: process.env.EMAIL,
-    to: 'katya.koliada49@gmail.com',
     subject: 'Замовлення',
-
     text: emailText
+    // html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+  };
+  sgMail.send(emailToAdmin).then(console.log('Email to Admin Sent'));
+
+  const emailToClient = {
+    to: req.body.email,
+    from: process.env.EMAIL,
+    subject: 'Замовлення ',
+    text: clientEmailText
   };
 
-  transporter.sendMail(mailOptions, (err, data) => {
-    if (err) {
-      return console.log('Error: ' + err);
-    }
-    return console.log('Email sent!!!!');
-  });
+  console.log(emailToClient);
+  sgMail.send(emailToClient).then(console.log('Email to Client Sent'));
 });
 
 module.exports = router;
