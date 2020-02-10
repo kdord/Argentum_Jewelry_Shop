@@ -4,7 +4,7 @@ import instaLogo from '../images/logoInstagram.png';
 import fbLogo from '../images/fbLogo.png';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
-import { FaUser, FaShoppingCart, FaUserCheck, FaSearch } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
 import '../style/css/HeaderStyle.css';
 
 import axios from 'axios';
