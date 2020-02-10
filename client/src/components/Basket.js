@@ -3,8 +3,7 @@ import axios from 'axios';
 import BasketsItem from './BasketsItem';
 import { MdPhoto } from 'react-icons/md';
 import '../style/css/BasketStyle.css';
-import { Link } from 'react-router-dom';
-import { FaEraser } from 'react-icons/fa';
+import { Button } from 'react-bootstrap';
 
 export default class Basket extends Component {
   constructor(props) {
@@ -138,6 +137,16 @@ export default class Basket extends Component {
       .catch(err => {
         console.log('Error: ' + err);
       });
+    axios
+      .post('/user/' + this.state.user._id + '/cleanBasket')
+      .then(res => {
+        console.log('basket cleaned');
+      })
+      .catch(err => {
+        console.log('Error: ' + err);
+      });
+
+    this.props.history.push('/catalog');
   }
 
   render() {
@@ -293,9 +302,9 @@ export default class Basket extends Component {
             </div>
           </div>
           <div className='toOrderBtnContainer'>
-            <Link className='btn btn-secondary' onClick={this.handleSend}>
+            <Button className='btn btn-secondary' onClick={this.handleSend}>
               Оформити замовлення
-            </Link>
+            </Button>
           </div>
         </div>
         {/* <p>

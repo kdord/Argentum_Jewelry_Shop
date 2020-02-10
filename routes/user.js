@@ -148,32 +148,6 @@ router.post('/:userId/update/:jewelryId', (req, res) => {
       }
     }
   );
-
-  // User.findOne({ _id: req.params.userId }, (err, foundUser) => {
-  //   if (err) {
-  //     console.log('Error: ' + err);
-  //   } else {
-  //     foundUser.update(
-  //       { 'basket._id': req.params.jewelryId },
-  //       { $set: { 'basket.$.amount': req.body.amount } }
-  //     );
-
-  // const foundItem = foundUser.basket.find(
-  //   item => item._id === req.params.jewelryId
-  // );
-  // const newBasket = foundUser.basket.filter(
-  //   item => item._id !== req.params.jewelryId
-  // );
-  // console.log(foundItem);
-  // foundItem.amount = req.body.amount;
-  // console.log('found item after changing');
-  // console.log(foundItem);
-  // newBasket.push(foundItem);
-  // console.log(newBasket);
-  // foundUser.basket = newBasket;
-  // foundUser.save();
-  //   }
-  // });
 });
 
 // let transporter = nodemailer.createTransport({
@@ -186,25 +160,9 @@ router.post('/:userId/update/:jewelryId', (req, res) => {
 
 router.post('/send', (req, res) => {
   console.log('in /send, req.body:');
-  console.log(req.body);
+  // console.log(req.body);
   let emailText = JSON.stringify(req.body);
-  // let emailHtml =
-  //   '<p>{{req.body.firstName}} {{req.body.lastName}}</p><br /><p>{req.body.email}</p><br /><p>{req.body.phoneNumber}</p><br />';
 
-  // let mailOptions = {
-  //   from: process.env.EMAIL,
-  //   to: 'katya.koliada49@gmail.com',
-  //   subject: 'Замовлення',
-  //   html: emailHtml
-  //   // text: emailText
-  // };
-
-  // transporter.sendMail(mailOptions, (err, data) => {
-  //   if (err) {
-  //     return console.log('Error: ' + err);
-  //   }
-  //   return console.log('Email sent!!!!');
-  // });
   let clientEmailText;
   if (req.body.paymentMethod === 'card') {
     clientEmailText =
@@ -229,8 +187,19 @@ router.post('/send', (req, res) => {
     text: clientEmailText
   };
 
-  console.log(emailToClient);
+  // console.log(emailToClient);
   sgMail.send(emailToClient).then(console.log('Email to Client Sent'));
+});
+
+router.post('/:userId/cleanBasket', (req, res) => {
+  User.findOne({ _id: req.params.userId }, (err, foundUser) => {
+    if (err) {
+      console.log('Error: ' + err);
+    } else {
+      foundUser.basket = [];
+      foundUser.save();
+    }
+  });
 });
 
 module.exports = router;
