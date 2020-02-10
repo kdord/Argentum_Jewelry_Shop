@@ -5,6 +5,8 @@
   .header .header-top img {
     width: 20px;
     margin: 0 7px; }
+  .header .header-top .header-left {
+    display: inline-flex; }
   .header .header-top .auth-dropdown {
     background-color: white;
     border: none;

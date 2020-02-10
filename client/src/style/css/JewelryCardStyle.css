@@ -1,5 +1,5 @@
 .card-link .card {
-  height: 350px;
+  height: 375px;
   border-radius: 0;
   padding: 0;
   border: 0;
@@ -24,6 +24,9 @@
     .card-link .card .card-body .priceAndLine {
       padding-bottom: 10px; }
 
+@media (max-width: 1200px) {
+  .card-link .card {
+    height: 350px; } }
 @media (max-width: 576px) {
   .card-link .card {
     height: 550px; } }
