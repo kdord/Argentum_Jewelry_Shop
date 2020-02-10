@@ -4,7 +4,7 @@ import instaLogo from '../images/logoInstagram.png';
 import fbLogo from '../images/fbLogo.png';
 import { Link } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
-import { FaUser, FaShoppingCart, FaUserCheck } from 'react-icons/fa';
+import { FaUser, FaShoppingCart, FaUserCheck, FaSearch } from 'react-icons/fa';
 import '../style/css/HeaderStyle.css';
 
 import axios from 'axios';
@@ -12,6 +12,9 @@ import axios from 'axios';
 class Header extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      searchC: ''
+    };
 
     this.logout = this.logout.bind(this);
   }
@@ -42,13 +45,15 @@ class Header extends Component {
     return (
       <div className='header'>
         <div className='header-top'>
-          <div className='insta-fb-icons'>
-            <a href={instaURL}>
-              <img alt='instaLogo' src={instaLogo} />
-            </a>
-            <a href={fbURL}>
-              <img alt='fbLogo' src={fbLogo} />
-            </a>
+          <div className='header-left'>
+            <div className='insta-fb-icons'>
+              <a href={instaURL}>
+                <img alt='instaLogo' src={instaLogo} />
+              </a>
+              <a href={fbURL}>
+                <img alt='fbLogo' src={fbLogo} />
+              </a>
+            </div>
           </div>
           <div className='auth d-flex'>
             <Dropdown drop={'left'}>
