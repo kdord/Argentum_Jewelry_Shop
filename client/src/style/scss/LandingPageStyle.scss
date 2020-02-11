@@ -6,6 +6,29 @@
       width: 100%;
     }
 
-    margin-bottom: 400px;
+    margin-bottom: 50px;
+  }
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+
+    .categories-item {
+      width: 50%;
+      padding: 1rem;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .landing {
+    .categories {
+      .categories-item {
+        width: 100%;
+      }
+    }
   }
 }

@@ -3,7 +3,12 @@ import '../style/css/LandingPageStyle.css';
 
 import banner2 from '../images/banner2.png';
 import banner1 from '../images/banner1.png';
+import rings from '../images/rings.png';
+import bracelets from '../images/bracelets.png';
+import neckleces from '../images/neckleces.png';
+import earrings from '../images/earrings.png';
 import { Carousel } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default class LandingPage extends Component {
   render() {
@@ -18,6 +23,20 @@ export default class LandingPage extends Component {
               <img className='d-block w-100' src={banner2} alt='banner' />
             </Carousel.Item>
           </Carousel>
+        </div>
+        <div className='categories container'>
+          <Link className='categories-item' to='/catalog/rings'>
+            <img src={rings} />
+          </Link>
+          <Link className='categories-item' to='/catalog/earrings'>
+            <img src={earrings} />
+          </Link>
+          <Link className='categories-item' to='/catalog/neckleces'>
+            <img src={neckleces} />
+          </Link>
+          <Link className='categories-item' to='/catalog/bracelets'>
+            <img src={bracelets} />
+          </Link>
         </div>
       </div>
     );

@@ -1,8 +1,20 @@
 .landing {
   width: 100%; }
   .landing .banner {
-    margin-bottom: 400px; }
+    margin-bottom: 50px; }
     .landing .banner img {
       width: 100%; }
+  .landing .categories {
+    display: flex;
+    flex-wrap: wrap; }
+    .landing .categories .categories-item {
+      width: 50%;
+      padding: 1rem; }
+      .landing .categories .categories-item img {
+        width: 100%; }
+
+@media (max-width: 768px) {
+  .landing .categories .categories-item {
+    width: 100%; } }
 
 /*# sourceMappingURL=LandingPageStyle.css.map */
