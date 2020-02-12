@@ -125,7 +125,7 @@ export default class ShowJewelry extends Component {
               </Carousel>
             </div>
             <div className='col'>
-              <div className='jewelry-show-main-desc pl-5 '>
+              <div className='jewelry-show-main-desc'>
                 {/* {this.jewelryCardTitle()} */}
                 <h2>{jewelry.jewelry_name}</h2>
                 <p className='jewelry-show-inStock'>

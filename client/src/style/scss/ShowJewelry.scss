@@ -10,6 +10,7 @@
   }
 }
 .jewelry-show-main-desc {
+  padding-left: 4rem;
   .jewelry-show-inStock {
     color: #808080;
   }
@@ -34,5 +35,11 @@
     th {
       padding: 15px 0;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .jewelry-show-main-desc {
+    padding-left: 1rem;
   }
 }

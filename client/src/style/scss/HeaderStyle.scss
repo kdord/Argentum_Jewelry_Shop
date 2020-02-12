@@ -39,3 +39,13 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .header {
+    .header-bottom {
+      img {
+        width: 20rem;
+      }
+    }
+  }
+}

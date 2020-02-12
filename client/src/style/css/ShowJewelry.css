@@ -6,19 +6,25 @@
 .jewelry-show-btns .jewelry-show-btn {
   color: black; }
 
-.jewelry-show-main-desc .jewelry-show-inStock {
-  color: #808080; }
-.jewelry-show-main-desc .jewelry-show-basket .btn-group input {
-  width: 50px;
-  text-align: center; }
-.jewelry-show-main-desc .jewelry-show-basket .btn-group button.btn.btn-secondary.basket-btn {
-  padding: 0;
-  font-size: 2rem;
-  width: 50px; }
-.jewelry-show-main-desc .jewelry-show-basket button.toBasket.btn.btn-secondary {
-  font-size: 1.2rem; }
-.jewelry-show-main-desc .table td,
-.jewelry-show-main-desc .table th {
-  padding: 15px 0; }
+.jewelry-show-main-desc {
+  padding-left: 4rem; }
+  .jewelry-show-main-desc .jewelry-show-inStock {
+    color: #808080; }
+  .jewelry-show-main-desc .jewelry-show-basket .btn-group input {
+    width: 50px;
+    text-align: center; }
+  .jewelry-show-main-desc .jewelry-show-basket .btn-group button.btn.btn-secondary.basket-btn {
+    padding: 0;
+    font-size: 2rem;
+    width: 50px; }
+  .jewelry-show-main-desc .jewelry-show-basket button.toBasket.btn.btn-secondary {
+    font-size: 1.2rem; }
+  .jewelry-show-main-desc .table td,
+  .jewelry-show-main-desc .table th {
+    padding: 15px 0; }
+
+@media (max-width: 768px) {
+  .jewelry-show-main-desc {
+    padding-left: 1rem; } }
 
 /*# sourceMappingURL=ShowJewelry.css.map */

@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAAA,WAAY;EACV,OAAO,EAAE,SAAS",
+"mappings": "AAAA,WAAY;EACV,OAAO,EAAE,SAAS;EAClB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM",
 "sources": ["../scss/LoginStyle.scss"],
 "names": [],
 "file": "LoginStyle.css"

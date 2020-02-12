@@ -2,7 +2,6 @@ footer.footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 300px;
   flex-wrap: wrap;
   margin-top: 3rem;
   padding: 1rem 15rem;
@@ -66,17 +65,22 @@ footer.footer {
     padding: 1rem 5rem; }
     footer.footer .footer-left img {
       width: 100%; } }
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   footer.footer {
-    padding: 1rem;
-    font-size: smaller; } }
+    padding: 2rem 1rem;
+    font-size: smaller; }
+    footer.footer .footer-center,
+    footer.footer .footer-right {
+      margin-top: 1rem; } }
 @media (max-width: 576px) {
   footer.footer .footer-left {
     width: 100%; }
     footer.footer .footer-left img {
       width: 80%; }
-  footer.footer .footer-center,
+  footer.footer .footer-center {
+    width: 100%;
+    text-align: center; }
   footer.footer .footer-right {
-    width: 50%; } }
+    display: none; } }
 
 /*# sourceMappingURL=FooterStyle.css.map */

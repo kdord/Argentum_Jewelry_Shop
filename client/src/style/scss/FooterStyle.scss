@@ -2,7 +2,7 @@ footer.footer {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 300px;
+
   flex-wrap: wrap;
   margin-top: 3rem;
   padding: 1rem 15rem;
@@ -91,11 +91,15 @@ footer.footer {
     }
   }
 }
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   footer.footer {
-    padding: 1rem;
-    // display: block;
+    padding: 2rem 1rem;
     font-size: smaller;
+
+    .footer-center,
+    .footer-right {
+      margin-top: 1rem;
+    }
   }
 }
 
@@ -108,9 +112,13 @@ footer.footer {
         width: 80%;
       }
     }
-    .footer-center,
+    .footer-center {
+      width: 100%;
+      text-align: center;
+    }
+
     .footer-right {
-      width: 50%;
+      display: none;
     }
   }
 }
