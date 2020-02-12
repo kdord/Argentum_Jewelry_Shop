@@ -3,7 +3,7 @@ footer.footer {
   justify-content: space-between;
   width: 100%;
   height: 300px;
-
+  flex-wrap: wrap;
   margin-top: 3rem;
   padding: 1rem 15rem;
   -webkit-box-shadow: inset 0px 14px 25px -20px rgba(0, 0, 0, 0.3);
@@ -11,7 +11,7 @@ footer.footer {
   box-shadow: inset 0px 14px 25px -20px rgba(0, 0, 0, 0.3);
 
   .footer-left {
-    width: 30%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -96,5 +96,21 @@ footer.footer {
     padding: 1rem;
     // display: block;
     font-size: smaller;
+  }
+}
+
+@media (max-width: 576px) {
+  footer.footer {
+    .footer-left {
+      width: 100%;
+
+      img {
+        width: 80%;
+      }
+    }
+    .footer-center,
+    .footer-right {
+      width: 50%;
+    }
   }
 }
