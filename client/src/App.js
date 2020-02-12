@@ -65,6 +65,11 @@ export default class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path={'/'} component={LandingPage} />
+            <Route
+              exact
+              path={'/'}
+              render={props => <LandingPage {...props} />}
+            />
             <Route exact path={'/create'} component={CreateJewelry} />
             <Route
               exact

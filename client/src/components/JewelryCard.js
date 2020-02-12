@@ -5,11 +5,11 @@ import '../style/css/JewelryCardStyle.css';
 
 export default class JewelryCard extends Component {
   render() {
-    const { jewelry } = this.props;
+    const { jewelry, landingPage } = this.props;
 
     return (
       <Link className='card-link' to={`/catalog/${jewelry._id}`}>
-        <Card className='card mt-4'>
+        <Card className={`card mt-4 ${landingPage && 'landing'}`}>
           <Card.Img
             src={jewelry.jewelry_img_1}
             className='card-img'

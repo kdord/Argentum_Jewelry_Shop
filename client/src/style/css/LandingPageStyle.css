@@ -9,9 +9,15 @@
     flex-wrap: wrap; }
     .landing .categories .categories-item {
       width: 50%;
-      padding: 1rem; }
+      padding: 0.5rem; }
       .landing .categories .categories-item img {
         width: 100%; }
+  .landing .topSalesContainer {
+    margin-top: 2rem; }
+    .landing .topSalesContainer .topSales-title {
+      margin-bottom: 0; }
+    .landing .topSalesContainer .topSales {
+      padding: 0.5rem; }
 
 @media (max-width: 768px) {
   .landing .categories .categories-item {

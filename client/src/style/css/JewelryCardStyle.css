@@ -1,3 +1,5 @@
+.card-link .card.landing {
+  height: 375px; }
 .card-link .card {
   height: 375px;
   border-radius: 0;
@@ -24,11 +26,17 @@
     .card-link .card .card-body .priceAndLine {
       padding-bottom: 10px; }
 
-@media (max-width: 1200px) {
+@media (max-width: 992px) {
   .card-link .card {
-    height: 350px; } }
+    height: 350px; }
+  .card-link .card.landing {
+    height: 450px; } }
+@media (max-width: 768px) {
+  .card-link .card.landing {
+    height: 400px; } }
 @media (max-width: 576px) {
-  .card-link .card {
+  .card-link .card,
+  .card-link .card.landing {
     height: 550px; } }
 
 /*# sourceMappingURL=JewelryCardStyle.css.map */
