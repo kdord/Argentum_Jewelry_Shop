@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,YAAa;EACX,OAAO,EAAE,SAAS",
+"sources": ["../scss/SignUpStyle.scss"],
+"names": [],
+"file": "SignUpStyle.css"
+}

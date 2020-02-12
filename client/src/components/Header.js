@@ -61,7 +61,11 @@ class Header extends Component {
                 variant='light'
                 className='auth-dropdown e-caret-hide'
               >
-                {user ? <FaUserCheck className='dropUserIcon' /> : <FaUser />}
+                {user ? (
+                  <FaUserCheck className='dropUserIcon' />
+                ) : (
+                  <FaUser className='dropUserIcon' />
+                )}
               </Dropdown.Toggle>
 
               <Dropdown.Menu>

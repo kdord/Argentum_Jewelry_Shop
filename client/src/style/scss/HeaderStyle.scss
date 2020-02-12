@@ -1,10 +1,11 @@
 .header {
+  margin-bottom: 1rem;
   .header-top {
     display: flex;
     justify-content: space-between;
-    padding: 0.25rem 0.5rem;
+    padding: 0.75rem 0.5rem;
     img {
-      width: 20px;
+      width: 35px;
       margin: 0 7px;
     }
     .header-left {
@@ -19,7 +20,7 @@
         display: none;
       }
       .dropUserIcon {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
       }
     }
     .shopingBasket {
@@ -34,7 +35,7 @@
     display: flex;
     justify-content: center;
     img {
-      width: 20rem;
+      width: 30rem;
     }
   }
 }

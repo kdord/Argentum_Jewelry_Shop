@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import '../style/css/SignUpStyle.css';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -61,8 +62,8 @@ export default class SignUp extends Component {
 
   render() {
     return (
-      <div className='container mt-5'>
-        <form onSubmit={this.handleSubmit} className='px-5'>
+      <div className='container'>
+        <form onSubmit={this.handleSubmit} className='signUp-form'>
           <div className='form-group'>
             <input
               className='form-control'
