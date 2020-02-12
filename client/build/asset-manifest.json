@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9ad238d8.chunk.css",
+    "main.js": "/static/js/main.3ba34929.chunk.js",
+    "main.js.map": "/static/js/main.3ba34929.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.cea588d5.js",
+    "runtime-main.js.map": "/static/js/runtime-main.cea588d5.js.map",
+    "static/css/2.67123b20.chunk.css": "/static/css/2.67123b20.chunk.css",
+    "static/js/2.a36efd1e.chunk.js": "/static/js/2.a36efd1e.chunk.js",
+    "static/js/2.a36efd1e.chunk.js.map": "/static/js/2.a36efd1e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e6158b722cd6b3b897e95b7b33db093f.js": "/precache-manifest.e6158b722cd6b3b897e95b7b33db093f.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.67123b20.chunk.css.map": "/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.9ad238d8.chunk.css.map": "/static/css/main.9ad238d8.chunk.css.map",
+    "static/js/2.a36efd1e.chunk.js.LICENSE": "/static/js/2.a36efd1e.chunk.js.LICENSE",
+    "static/media/banner1.png": "/static/media/banner1.b9fd505e.png",
+    "static/media/banner2.png": "/static/media/banner2.b0632384.png",
+    "static/media/bracelets.png": "/static/media/bracelets.87cf7d60.png",
+    "static/media/earrings.png": "/static/media/earrings.555f125b.png",
+    "static/media/fbLogo.png": "/static/media/fbLogo.c96a4983.png",
+    "static/media/logoNew.png": "/static/media/logoNew.42ed39f8.png",
+    "static/media/neckleces.png": "/static/media/neckleces.336f84aa.png",
+    "static/media/rings.png": "/static/media/rings.fa89ef6c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cea588d5.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.a36efd1e.chunk.js",
+    "static/css/main.9ad238d8.chunk.css",
+    "static/js/main.3ba34929.chunk.js"
+  ]
+}
