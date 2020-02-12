@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const session = require('express-session');
 const passport = require('./passport');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -22,8 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(morgan('dev'));
 // db config
-const MONGODB_URI =
-  'mongodb+srv://kdord:kdordShopPass@cluster0-jskl6.mongodb.net/test?retryWrites=true&w=majority';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
@@ -47,18 +47,18 @@ app.use(passport.session()); // calls the deserializeUser
 app.use('/user', userRoutes);
 app.use('/jewelry', jewelryRoutes);
 
+// For production = Build
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (request, response) => {
+    response.sendFile(
+      path.join(__dirname, 'client/build/static', 'index.html')
+    );
+  });
+}
+
 app.listen(PORT, () => {
   console.log(`Server is started at ${PORT} port`);
 });
-
-// for production session
-
-// const MongoStore = require('connect-mongo')(session)
-// app.use(
-//   session({
-//     secret:'argentum',
-//     store: new MongoStore({mongooseConnection: connection}),
-//     resave:false,
-//     saveUninitialized:false
-//   })
-// )
