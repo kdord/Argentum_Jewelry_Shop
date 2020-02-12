@@ -47,10 +47,10 @@ class Header extends Component {
         <div className='header-top'>
           <div className='header-left'>
             <div className='insta-fb-icons'>
-              <a href={instaURL}>
+              <a href='#'>
                 <img alt='instaLogo' src={instaLogo} />
               </a>
-              <a href={fbURL}>
+              <a href='#'>
                 <img alt='fbLogo' src={fbLogo} />
               </a>
             </div>
