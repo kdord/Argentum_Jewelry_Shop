@@ -15,10 +15,10 @@ export default class Footer extends Component {
         <div className='footer-left'>
           <img alt='logo' src={logo} />
           <div className='insta-fb-icons'>
-            <a href={instaURL}>
+            <a href='#'>
               <img alt='instaLogo' src={instaLogo} />
             </a>
-            <a href={fbURL}>
+            <a href='#'>
               <img alt='fbLogo' src={fbLogo} />
             </a>
           </div>
