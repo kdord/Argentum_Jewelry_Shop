@@ -22,7 +22,7 @@ export default class LandingPage extends Component {
     this.getJewelryTopSalesList = this.getJewelryTopSalesList.bind(this);
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     axios
       .get('/jewelry/')
       .then(res => {
@@ -33,7 +33,7 @@ export default class LandingPage extends Component {
       .catch(err => {
         console.log('Error: ' + err);
       });
-  };
+  }
 
   getJewelryTopSalesList = () => {
     console.log('in getJewelryTopSalesList ');
