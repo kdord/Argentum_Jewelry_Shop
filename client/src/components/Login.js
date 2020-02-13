@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { IoMdClose } from 'react-icons/io';
 import axios from 'axios';
 import '../style/css/LoginStyle.css';
 
@@ -8,10 +10,13 @@ export default class Login extends Component {
 
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      modalShow: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
   }
 
   handleChange({ target }) {
@@ -46,7 +51,15 @@ export default class Login extends Component {
       .catch(err => {
         console.log('login error: ');
         console.log(err);
+        this.setState({ modalShow: true });
       });
+  }
+
+  handleOpen() {
+    this.setState({ modalShow: true });
+  }
+  handleClose() {
+    this.setState({ modalShow: false });
   }
 
   render() {
@@ -77,6 +90,22 @@ export default class Login extends Component {
             Увійти
           </button>
         </form>
+
+        <Modal show={this.state.modalShow} className='modal'>
+          <Modal.Header>
+            <Button
+              className='modal-header-btn'
+              onClick={this.handleClose}
+              variant='light'
+            >
+              <IoMdClose />
+            </Button>
+          </Modal.Header>
+          <Modal.Body>
+            Невалідний логін або пароль. Перевірте будь ласка правильність
+            введених даних.
+          </Modal.Body>
+        </Modal>
       </div>
     );
   }
