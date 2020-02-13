@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
+import { IoMdClose } from 'react-icons/io';
 import axios from 'axios';
 import '../style/css/SignUpStyle.css';
 
@@ -13,10 +15,14 @@ export default class SignUp extends Component {
       lastName: '',
       password: '',
       confirmPassword: '',
-      basket: []
+      basket: [],
+      modalShow: false,
+      modalMessage: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleOpen = this.handleOpen.bind(this);
   }
 
   handleChange({ target }) {
@@ -30,6 +36,7 @@ export default class SignUp extends Component {
     const { password, confirmPassword } = this.state;
     if (password !== confirmPassword) {
       this.setState({ password: '', confirmPassword: '' });
+
       return alert('Паролі не співпадають. Повторіть будь ласка введення');
     }
     console.log('signup form, email: ');
@@ -46,18 +53,22 @@ export default class SignUp extends Component {
         basket: this.state.basket
       })
       .then(res => {
-        console.log(res);
-        if (res.data) {
-          console.log(res.data);
+        if (res.data.error) {
+          this.setState({ modalMessage: res.data.error, modalShow: true });
         } else {
-          console.log('signup error');
+          this.props.history.push('/login');
         }
-        this.props.history.push('/login');
       })
       .catch(err => {
         console.log('sign up server error');
         console.log(err);
       });
+  }
+  handleOpen() {
+    this.setState({ modalShow: true });
+  }
+  handleClose() {
+    this.setState({ modalShow: false });
   }
 
   render() {
@@ -128,6 +139,19 @@ export default class SignUp extends Component {
             Зареєструватись
           </button>
         </form>
+
+        <Modal show={this.state.modalShow} className='modal'>
+          <Modal.Header>
+            <Button
+              className='modal-header-btn'
+              onClick={this.handleClose}
+              variant='light'
+            >
+              <IoMdClose />
+            </Button>
+          </Modal.Header>
+          <Modal.Body>{this.state.modalMessage}</Modal.Body>
+        </Modal>
       </div>
     );
   }

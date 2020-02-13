@@ -19,13 +19,13 @@ router.post('/signup', (req, res) => {
     // }
     if (userMatch) {
       return res.json({
-        error: `Sorry, already a user with the username ${username}`
+        error: `Користувач з логіном ${username} вже існує.`
       });
     } else {
       User.findOne({ email: email }, (err, foundUser) => {
         if (foundUser) {
           return res.json({
-            error: `Sorry, already a user with the email ${email}`
+            error: `Користувач з адресою електронної пошти ${email} вже існує`
           });
         }
 
@@ -52,7 +52,7 @@ router.post('/signup', (req, res) => {
           console.log(newUser);
           if (err) return res.json(err);
 
-          return res.json(savedUser);
+          return res.send({ message: 'Successful sign up' });
         });
       });
     }
